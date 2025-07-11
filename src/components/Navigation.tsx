@@ -61,7 +61,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
             className="font-display text-xl tracking-wide text-foreground hover:text-accent transition-colors duration-300"
             onClick={closeOverlay}
           >
-            Lowtide Ritual
+            LOWTIDE RITUAL
           </Link>
           
           <button
@@ -69,7 +69,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
             className="hidden md:flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300"
           >
             {isOverlayOpen ? <X size={16} /> : <Menu size={16} />}
-            <span>{language === 'EN' ? 'Menu' : 'Menú'}</span>
+            <span>{language === 'EN' ? 'MENU' : 'MENÚ'}</span>
           </button>
         </div>
       </header>

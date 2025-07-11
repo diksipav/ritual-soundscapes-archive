@@ -1,8 +1,22 @@
 import { Link } from 'react-router-dom';
 import VideoHero from '@/components/VideoHero';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
 
 const Index = () => {
+  const [scrollY, setScrollY] = useState(0);
+  const [logoTransformed, setLogoTransformed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      setLogoTransformed(currentScrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const recentSessions = [
     {
       id: '1',
@@ -51,36 +65,51 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Floating Logo */}
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none transition-all duration-1000 ease-out"
+           style={{
+             transform: logoTransformed 
+               ? `translate(-50%, -50%) translate(${-50 + scrollY * 0.1}vw, ${-50 + scrollY * 0.05}vh) scale(0.6)` 
+               : 'translate(-50%, -50%) scale(1)',
+             opacity: logoTransformed ? 0.9 : 1
+           }}>
+        <h1 className={`font-display text-white transition-all duration-1000 ${
+          logoTransformed 
+            ? 'text-2xl text-accent' 
+            : 'text-6xl md:text-8xl'
+        }`}>
+          {logoTransformed ? 'LTY' : 'LOWTIDE RITUAL'}
+        </h1>
+      </div>
+
       {/* Hero Video Section */}
       <VideoHero isLive={true}>
-        <h1 className="font-display text-4xl md:text-6xl mb-4 text-white animate-fade-in">
-          where music becomes a ritual
-        </h1>
-        <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in delay-300">
-          immersive audio experiences crafted for mindful listening and deep connection
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
-          <Link to="/live">
-            <button className="btn-animated-primary">
-              join live session
-            </button>
-          </Link>
-          <Link to="/archive">
-            <button className="btn-animated-ghost">
-              explore archive
-            </button>
-          </Link>
+        <div className="mt-32 md:mt-48">
+          <h2 className="font-display text-2xl md:text-4xl mb-4 text-white animate-fade-in">
+            WHERE MUSIC BECOMES A RITUAL
+          </h2>
+          <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in delay-300">
+            IMMERSIVE AUDIO EXPERIENCES CRAFTED FOR MINDFUL LISTENING AND DEEP CONNECTION
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
+            <Link to="/live" className="btn-animated-primary">
+              JOIN LIVE SESSION
+            </Link>
+            <Link to="/archive" className="btn-animated-ghost">
+              EXPLORE ARCHIVE
+            </Link>
+          </div>
         </div>
       </VideoHero>
 
       {/* Recent Sessions Section */}
-      <section className="py-20 px-6">
+      <section className="py-32 px-6 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">recent sessions</h2>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              discover our latest audio journeys, each crafted to transport you to a different state of consciousness
+          <div className="text-center mb-20 scroll-fade-in">
+            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-6 tracking-wide">RECENT SESSIONS</h2>
+            <p className="font-body text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              DISCOVER OUR LATEST AUDIO JOURNEYS, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
             </p>
           </div>
 
@@ -96,11 +125,11 @@ const Index = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300">
+                    <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300 uppercase tracking-wide">
                       {session.title}
                     </h3>
                     <div className="flex items-center justify-between">
-                      <p className="font-body text-sm text-muted-foreground">by {session.artist}</p>
+                      <p className="font-body text-sm text-muted-foreground uppercase">BY {session.artist}</p>
                       <span className="font-body text-xs text-muted-foreground">{session.duration}</span>
                     </div>
                   </div>
@@ -109,23 +138,45 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link to="/archive">
-              <button className="btn-animated-secondary">
-                view all sessions
-              </button>
+          <div className="text-center mt-16">
+            <Link to="/archive" className="btn-animated-secondary">
+              VIEW ALL SESSIONS
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Experiences Section */}
+      <section className="py-32 px-6 bg-muted/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="scroll-fade-in">
+              <h2 className="font-display text-5xl md:text-6xl text-foreground mb-8 tracking-wide">EXPERIENCES</h2>
+              <p className="font-body text-xl text-muted-foreground leading-relaxed mb-8">
+                BEYOND THE SESSIONS, WE CREATE IMMERSIVE EXPERIENCES THAT CONNECT YOU WITH NATURE, COMMUNITY, AND YOURSELF. FROM SUNRISE CEREMONIES TO OCEAN-SIDE RITUALS.
+              </p>
+              <Link to="/events" className="btn-animated-primary">
+                EXPLORE EXPERIENCES
+              </Link>
+            </div>
+            <div className="scroll-fade-in delay-300">
+              <img 
+                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop"
+                alt="Surfing experience"
+                className="w-full h-[500px] object-cover rounded-sm shadow-elegant"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Upcoming Events Section */}
-      <section className="py-20 px-6 bg-muted/20">
+      <section className="py-32 px-6 bg-background">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">upcoming events</h2>
-            <p className="font-body text-lg text-muted-foreground">
-              join us for intimate gatherings where music and nature converge
+          <div className="text-center mb-20 scroll-fade-in">
+            <h2 className="font-display text-5xl md:text-6xl text-foreground mb-6 tracking-wide">UPCOMING EVENTS</h2>
+            <p className="font-body text-xl text-muted-foreground">
+              JOIN US FOR INTIMATE GATHERINGS WHERE MUSIC AND NATURE CONVERGE
             </p>
           </div>
 
@@ -134,44 +185,40 @@ const Index = () => {
               <div key={event.id} className="card-elegant">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <h3 className="font-display text-xl text-foreground mb-1">{event.title}</h3>
-                    <p className="font-body text-muted-foreground">{event.location}</p>
+                    <h3 className="font-display text-xl text-foreground mb-1 uppercase tracking-wide">{event.title}</h3>
+                    <p className="font-body text-muted-foreground uppercase">{event.location}</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="font-body-medium text-accent">{event.date}</span>
-                    <button className="btn-animated-primary">
-                      Get Tickets
-                    </button>
+                    <span className="font-body-medium text-accent uppercase">{event.date}</span>
+                    <Link to="/events" className="btn-animated-primary">
+                      GET TICKETS
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link to="/events">
-              <button className="btn-animated-secondary">
-                View All Events
-              </button>
+          <div className="text-center mt-16">
+            <Link to="/events" className="btn-animated-secondary">
+              VIEW ALL EVENTS
             </Link>
           </div>
         </div>
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-4xl text-foreground mb-8">our philosophy</h2>
-          <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-            at lowtide ritual, we believe in the transformative power of mindful listening. 
-            each session is carefully curated to create space for introspection, connection, 
-            and the rediscovery of wonder in the everyday.
+      <section className="py-32 px-6 bg-muted/10">
+        <div className="max-w-4xl mx-auto text-center scroll-fade-in">
+          <h2 className="font-display text-5xl md:text-6xl text-foreground mb-12 tracking-wide">OUR PHILOSOPHY</h2>
+          <p className="font-body text-xl text-muted-foreground leading-relaxed mb-12">
+            AT LOWTIDE RITUAL, WE BELIEVE IN THE TRANSFORMATIVE POWER OF MINDFUL LISTENING. 
+            EACH SESSION IS CAREFULLY CURATED TO CREATE SPACE FOR INTROSPECTION, CONNECTION, 
+            AND THE REDISCOVERY OF WONDER IN THE EVERYDAY.
           </p>
-            <Link to="/rituals">
-              <button className="btn-animated-primary">
-                explore rituals
-              </button>
-            </Link>
+          <Link to="/rituals" className="btn-animated-primary">
+            EXPLORE RITUALS
+          </Link>
         </div>
       </section>
     </div>

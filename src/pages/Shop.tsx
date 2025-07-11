@@ -74,60 +74,84 @@ export default function Shop() {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-24 pb-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="font-display text-5xl text-foreground mb-6">Shop</h1>
-          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            Carefully curated objects for your daily rituals. Each piece is selected to enhance your connection to the present moment.
-          </p>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] overflow-hidden">
+        <img 
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop"
+          alt="Ocean ritual"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        
+        <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
+          <div className="max-w-3xl">
+            <h1 className="font-display text-6xl md:text-8xl mb-6 tracking-wide animate-fade-in">RITUAL WEAR</h1>
+            <p className="font-body text-xl md:text-2xl animate-fade-in delay-300 leading-relaxed">
+              CAREFULLY CURATED OBJECTS FOR YOUR DAILY RITUALS. EACH PIECE IS SELECTED TO ENHANCE YOUR CONNECTION TO THE PRESENT MOMENT.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="grid-elegant">
-          {products.map((product) => (
-            <div key={product.id} className="card-elegant group cursor-pointer">
-              <div className="aspect-square overflow-hidden rounded-sm mb-4">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              
-              <div className="space-y-3">
-                <h3 className="font-display text-xl text-foreground">{product.name}</h3>
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                  {product.description}
-                </p>
-                <div className="flex items-center justify-between pt-2">
-                  <span className="font-body-medium text-lg text-foreground">${product.price}</span>
-                  <button
-                    onClick={() => handlePurchase(product)}
-                    className="btn-animated-primary"
-                  >
-                    Add to Cart
-                  </button>
+      {/* Products Section */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 tracking-wide">COLLECTION</h2>
+            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              ESSENTIAL PIECES FOR THE MODERN RITUALIST
+            </p>
+          </div>
+
+          <div className="grid-elegant">
+            {products.map((product, index) => (
+              <div key={product.id} className="card-elegant group cursor-pointer scroll-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                <div className="aspect-square overflow-hidden rounded-sm mb-6">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="font-display text-xl text-foreground uppercase tracking-wider">{product.name}</h3>
+                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                    {product.description}
+                  </p>
+                  <div className="flex items-center justify-between pt-4">
+                    <span className="font-body-medium text-xl text-foreground">${product.price}</span>
+                    <button
+                      onClick={() => handlePurchase(product)}
+                      className="btn-animated-primary"
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        {!user && (
-          <div className="text-center mt-16 p-8 border border-border rounded-sm bg-muted/20">
-            <h3 className="font-display text-xl text-foreground mb-2">Sign in to purchase</h3>
-            <p className="font-body text-muted-foreground mb-4">
-              Create an account to complete your purchase and access exclusive products.
+      {!user && (
+        <section className="py-20 px-6 bg-muted/10">
+          <div className="max-w-2xl mx-auto text-center">
+            <h3 className="font-display text-3xl text-foreground mb-4 tracking-wide">JOIN THE RITUAL</h3>
+            <p className="font-body text-lg text-muted-foreground mb-8 leading-relaxed">
+              CREATE AN ACCOUNT TO COMPLETE YOUR PURCHASE AND ACCESS EXCLUSIVE PRODUCTS.
             </p>
             <button
               onClick={() => navigate('/login')}
               className="btn-animated-primary"
             >
-              Sign In
+              SIGN IN
             </button>
           </div>
-        )}
-      </div>
+        </section>
+      )}
     </div>
   );
 }

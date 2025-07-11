@@ -167,6 +167,26 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover;
   }
 
+  /* Elegant scroll animations */
+  .scroll-fade-in {
+    @apply opacity-0 translate-y-12 transition-all duration-1000 ease-out;
+  }
+
+  .scroll-fade-in.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .scroll-fade-in.delay-300 {
+    @apply transition-delay-300;
+  }
+
+  /* Initialize scroll animations */
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-fade-in {
+      @apply will-change-transform;
+    }
+  }
+
   /* Card styles */
   .card-elegant {
     @apply rounded-sm border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;

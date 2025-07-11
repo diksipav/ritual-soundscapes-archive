@@ -47,9 +47,9 @@ export default function VideoHero({
       {/* Mute button */}
       <button
         onClick={toggleMute}
-        className="absolute top-6 right-6 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors pointer-events-auto"
+        className="absolute bottom-6 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors pointer-events-auto backdrop-blur-sm"
       >
-        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
       
       {/* Content overlay */}
