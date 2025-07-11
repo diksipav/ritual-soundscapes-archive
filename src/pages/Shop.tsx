@@ -27,31 +27,31 @@ export default function Shop() {
   const products: Product[] = [
     {
       id: '1',
-      name: 'Ritual Tote Bag',
-      price: 65,
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop',
-      description: 'Hand-woven cotton tote with embossed Lowtide logo'
+      name: 'Wave Ritual Tee',
+      price: 45,
+      image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
+      description: 'Organic cotton t-shirt with minimalist wave logo embroidery'
     },
     {
       id: '2',
-      name: 'Essential Incense Set',
-      price: 45,
-      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=400&fit=crop',
-      description: 'Curated collection of natural incense for your rituals'
+      name: 'Lowtide Logo Tee',
+      price: 42,
+      image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=400&fit=crop',
+      description: 'Classic black tee with subtle wave pattern print'
     },
     {
       id: '3',
-      name: 'Meditation Journal',
-      price: 35,
-      image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=400&fit=crop',
-      description: 'Handbound journal for capturing your journey'
+      name: 'Ritual White Tee',
+      price: 40,
+      image: 'https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=400&h=400&fit=crop',
+      description: 'Premium white cotton with embossed wave logo'
     },
     {
       id: '4',
-      name: 'Ritual Candle',
-      price: 28,
-      image: 'https://images.unsplash.com/photo-1602874801006-bc8061a8a062?w=400&h=400&fit=crop',
-      description: 'Soy wax candle with natural botanical elements'
+      name: 'Ocean Wave Tee',
+      price: 48,
+      image: 'https://images.unsplash.com/photo-1583743814966-8936f37f8d2b?w=400&h=400&fit=crop',
+      description: 'Oversized fit with hand-drawn wave graphic'
     }
   ];
 
@@ -101,12 +101,12 @@ export default function Shop() {
                 </p>
                 <div className="flex items-center justify-between pt-2">
                   <span className="font-body-medium text-lg text-foreground">${product.price}</span>
-                  <Button
+                  <button
                     onClick={() => handlePurchase(product)}
-                    className="btn-primary"
+                    className="btn-animated-primary"
                   >
                     Add to Cart
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -119,12 +119,12 @@ export default function Shop() {
             <p className="font-body text-muted-foreground mb-4">
               Create an account to complete your purchase and access exclusive products.
             </p>
-            <Button
+            <button
               onClick={() => navigate('/login')}
-              className="btn-primary"
+              className="btn-animated-primary"
             >
               Sign In
-            </Button>
+            </button>
           </div>
         )}
       </div>

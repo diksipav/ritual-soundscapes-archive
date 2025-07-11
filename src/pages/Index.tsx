@@ -6,20 +6,28 @@ const Index = () => {
   const recentSessions = [
     {
       id: '1',
+      title: 'Ritual Frequencies',
+      artist: 'Lowtide Collective',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
+      duration: '45 min',
+      videoUrl: 'https://youtu.be/rxAe3xqyeSA'
+    },
+    {
+      id: '2',
       title: 'Coastal Meditation',
       artist: 'Ocean Collective',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop',
       duration: '42 min'
     },
     {
-      id: '2',
+      id: '3',
       title: 'Forest Frequencies', 
       artist: 'Nature Lab',
       image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
       duration: '58 min'
     },
     {
-      id: '3',
+      id: '4',
       title: 'Urban Tranquility',
       artist: 'City Zen',
       image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
@@ -47,21 +55,21 @@ const Index = () => {
       {/* Hero Video Section */}
       <VideoHero isLive={true}>
         <h1 className="font-display text-4xl md:text-6xl mb-4 text-white">
-          Where Music Meets Nature
+          Where Music Becomes a Ritual
         </h1>
         <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
           Immersive audio experiences crafted for mindful listening and deep connection
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/live">
-            <Button className="btn-primary bg-white text-black hover:bg-white/90">
+            <button className="btn-animated-primary">
               Join Live Session
-            </Button>
+            </button>
           </Link>
           <Link to="/archive">
-            <Button className="btn-ghost text-white border-white hover:bg-white/10">
+            <button className="btn-animated-ghost">
               Explore Archive
-            </Button>
+            </button>
           </Link>
         </div>
       </VideoHero>
@@ -103,9 +111,9 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Link to="/archive">
-              <Button className="btn-secondary">
+              <button className="btn-animated-secondary">
                 View All Sessions
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -131,9 +139,9 @@ const Index = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="font-body-medium text-accent">{event.date}</span>
-                    <Button className="btn-primary">
+                    <button className="btn-animated-primary">
                       Get Tickets
-                    </Button>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -142,9 +150,9 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Link to="/events">
-              <Button className="btn-secondary">
+              <button className="btn-animated-secondary">
                 View All Events
-              </Button>
+              </button>
             </Link>
           </div>
         </div>
@@ -159,11 +167,11 @@ const Index = () => {
             Each session is carefully curated to create space for introspection, connection, 
             and the rediscovery of wonder in the everyday.
           </p>
-          <Link to="/rituals">
-            <Button className="btn-primary">
-              Explore Rituals
-            </Button>
-          </Link>
+            <Link to="/rituals">
+              <button className="btn-animated-primary">
+                Explore Rituals
+              </button>
+            </Link>
         </div>
       </section>
     </div>

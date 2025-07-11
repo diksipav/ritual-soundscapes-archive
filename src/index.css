@@ -182,6 +182,47 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply h-2 w-2 animate-pulse rounded-full bg-white;
   }
 
+  /* Flashing live indicator */
+  .live-indicator-flashing {
+    @apply relative inline-flex items-center gap-2 rounded-full bg-red-500 px-4 py-2 text-sm font-body-medium text-white transition-all duration-300;
+    animation: flash 2s infinite;
+  }
+
+  .live-indicator-flashing::before {
+    content: '';
+    @apply h-2 w-2 animate-pulse rounded-full bg-white;
+  }
+
+  @keyframes flash {
+    0%, 50% { opacity: 1; }
+    25%, 75% { opacity: 0.6; }
+  }
+
+  /* Animated buttons */
+  .btn-animated-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-animated-primary:hover {
+    @apply font-display text-accent scale-105;
+  }
+
+  .btn-animated-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-foreground bg-background border border-border rounded-sm shadow-sm transition-all duration-300 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-animated-secondary:hover {
+    @apply font-display text-accent scale-105;
+  }
+
+  .btn-animated-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm transition-all duration-300 hover:bg-muted/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-animated-ghost:hover {
+    @apply font-display text-accent scale-105;
+  }
+
   /* Grid layouts */
   .grid-elegant {
     @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;

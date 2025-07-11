@@ -12,6 +12,15 @@ export default function Archive() {
   const sessions: ArchiveSession[] = [
     {
       id: '1',
+      title: 'Ritual Frequencies',
+      artist: 'Lowtide Collective',
+      date: 'March 12, 2024',
+      duration: '45 min',
+      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=300&h=300&fit=crop',
+      tags: ['Ritual', 'Meditation', 'Deep']
+    },
+    {
+      id: '2',
       title: 'Dawn Meditation',
       artist: 'Luna Collective',
       date: 'March 10, 2024',
@@ -20,7 +29,7 @@ export default function Archive() {
       tags: ['Ambient', 'Meditation', 'Dawn']
     },
     {
-      id: '2',
+      id: '3',
       title: 'Forest Rhythms',
       artist: 'Nature Sound Lab',
       date: 'March 8, 2024',
@@ -29,7 +38,7 @@ export default function Archive() {
       tags: ['Field Recording', 'Nature', 'Organic']
     },
     {
-      id: '3',
+      id: '4',
       title: 'Coastal Frequencies',
       artist: 'Wave Theory',
       date: 'March 5, 2024',
@@ -38,7 +47,7 @@ export default function Archive() {
       tags: ['Electronic', 'Coastal', 'Ambient']
     },
     {
-      id: '4',
+      id: '5',
       title: 'Urban Tranquility',
       artist: 'City Zen',
       date: 'March 3, 2024',
@@ -47,7 +56,7 @@ export default function Archive() {
       tags: ['Urban', 'Minimal', 'Evening']
     },
     {
-      id: '5',
+      id: '6',
       title: 'Mountain Echo',
       artist: 'Alpine Sessions',
       date: 'March 1, 2024',
@@ -56,7 +65,7 @@ export default function Archive() {
       tags: ['Mountain', 'Echo', 'Spatial']
     },
     {
-      id: '6',
+      id: '7',
       title: 'Nocturnal Garden',
       artist: 'Midnight Bloom',
       date: 'February 28, 2024',
@@ -114,7 +123,7 @@ export default function Archive() {
         </div>
 
         <div className="text-center mt-16">
-          <button className="btn-secondary">
+          <button className="btn-animated-secondary">
             Load More Sessions
           </button>
         </div>
