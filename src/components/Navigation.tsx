@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { X, Menu } from 'lucide-react';
@@ -59,18 +58,18 @@ export default function Navigation({ className = '' }: NavigationProps) {
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="font-display text-xl tracking-wide text-foreground hover:text-accent transition-colors duration-300 uppercase"
+            className="font-display text-xl tracking-wide text-foreground hover:text-accent transition-colors duration-300"
             onClick={closeOverlay}
           >
-            LOWTIDE RITUAL
+            Lowtide Ritual
           </Link>
           
           <button
             onClick={toggleOverlay}
-            className="hidden md:flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 uppercase"
+            className="hidden md:flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300"
           >
             {isOverlayOpen ? <X size={16} /> : <Menu size={16} />}
-            <span>{language === 'EN' ? 'MENU' : 'MENÚ'}</span>
+            <span>{language === 'EN' ? 'Menu' : 'Menú'}</span>
           </button>
         </div>
       </header>
@@ -82,7 +81,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
             <Link
               key={link.href}
               to={link.href}
-              className={`font-body text-xs text-center transition-colors duration-300 uppercase ${
+              className={`font-body text-xs text-center transition-colors duration-300 ${
                 location.pathname === link.href 
                   ? 'text-accent' 
                   : 'text-muted-foreground hover:text-foreground'
@@ -94,14 +93,14 @@ export default function Navigation({ className = '' }: NavigationProps) {
         </div>
       </nav>
 
-      {/* Desktop Navigation Overlay with fancy animation */}
+      {/* Desktop Navigation Overlay */}
       {isOverlayOpen && (
         <div 
-          className="fixed inset-0 z-50 nav-overlay hidden md:flex items-center justify-center animate-in fade-in-0 duration-500"
+          className="fixed inset-0 z-50 nav-overlay hidden md:flex items-center justify-center"
           onClick={closeOverlay}
         >
           <div 
-            className="text-center animate-in slide-in-from-top-4 duration-700"
+            className="text-center"
             onClick={(e) => e.stopPropagation()}
           >
             <nav className="mb-12">
@@ -109,12 +108,12 @@ export default function Navigation({ className = '' }: NavigationProps) {
                 {navLinks.map((link, index) => (
                   <li 
                     key={link.href}
-                    className="opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards] transform translate-y-4"
-                    style={{ animationDelay: `${index * 0.15}s` }}
+                    className="opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <Link
                       to={link.href}
-                      className="nav-link text-2xl font-display hover:scale-110 transform transition-all duration-300"
+                      className="nav-link"
                       onClick={closeOverlay}
                     >
                       {link.label}
@@ -122,21 +121,21 @@ export default function Navigation({ className = '' }: NavigationProps) {
                   </li>
                 ))}
                 <li 
-                  className="opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards] transform translate-y-4"
-                  style={{ animationDelay: `${navLinks.length * 0.15}s` }}
+                  className="opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]"
+                  style={{ animationDelay: `${navLinks.length * 0.1}s` }}
                 >
                   {user ? (
                     <div className="space-y-4">
                       <Link
                         to={authLink.href}
-                        className="nav-link text-2xl font-display hover:scale-110 transform transition-all duration-300 block"
+                        className="nav-link block"
                         onClick={closeOverlay}
                       >
                         {authLink.label}
                       </Link>
                       <button
                         onClick={handleSignOut}
-                        className="nav-link text-2xl font-display hover:scale-110 transform transition-all duration-300"
+                        className="nav-link"
                       >
                         {language === 'EN' ? 'SIGN OUT' : 'CERRAR SESIÓN'}
                       </button>
@@ -144,7 +143,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
                   ) : (
                     <Link
                       to={authLink.href}
-                      className="nav-link text-2xl font-display hover:scale-110 transform transition-all duration-300"
+                      className="nav-link"
                       onClick={closeOverlay}
                     >
                       {authLink.label}
@@ -155,10 +154,10 @@ export default function Navigation({ className = '' }: NavigationProps) {
             </nav>
 
             {/* Language Switcher */}
-            <div className="flex items-center justify-center gap-4 opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards] transform translate-y-4" style={{ animationDelay: `${(navLinks.length + 1) * 0.15}s` }}>
+            <div className="flex items-center justify-center gap-4">
               <button
                 onClick={() => setLanguage('EN')}
-                className={`font-body text-sm transition-all duration-300 hover:scale-110 uppercase ${
+                className={`font-body text-sm transition-colors duration-300 ${
                   language === 'EN' ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -167,7 +166,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
               <span className="text-muted-foreground">|</span>
               <button
                 onClick={() => setLanguage('ES')}
-                className={`font-body text-sm transition-all duration-300 hover:scale-110 uppercase ${
+                className={`font-body text-sm transition-colors duration-300 ${
                   language === 'ES' ? 'text-accent' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -182,7 +181,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
         @keyframes fadeInUp {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;

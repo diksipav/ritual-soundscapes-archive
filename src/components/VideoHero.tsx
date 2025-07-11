@@ -1,4 +1,3 @@
-
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Volume2, VolumeX } from 'lucide-react';
@@ -31,7 +30,7 @@ export default function VideoHero({
   };
 
   return (
-    <section className="video-hero relative h-screen overflow-hidden">
+    <section className="video-hero relative h-screen overflow-hidden pt-20">
       <iframe
         ref={videoRef}
         src={videoSrc}
@@ -43,20 +42,20 @@ export default function VideoHero({
       />
       
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-black/30" />
       
-      {/* Mute button - positioned lower */}
+      {/* Mute button */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-8 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-all duration-300 pointer-events-auto backdrop-blur-sm hover:scale-110"
+        className="absolute top-6 right-6 z-20 p-2 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors pointer-events-auto"
       >
-        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
+        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
       </button>
       
       {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
         {isLive && (
-          <Link to="/live" className="live-indicator-flashing mb-8 cursor-pointer hover:scale-105 transition-transform duration-300">
+          <Link to="/live" className="live-indicator-flashing mb-8 cursor-pointer hover:scale-105 transition-transform">
             <span>LIVE NOW</span>
           </Link>
         )}

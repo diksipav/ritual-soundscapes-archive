@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -28,152 +27,107 @@ export default function Shop() {
   const products: Product[] = [
     {
       id: '1',
-      name: 'LOWTIDE RITUAL TEE',
+      name: 'Wave Ritual Tee',
       price: 45,
       image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-      description: 'ORGANIC COTTON T-SHIRT WITH MINIMALIST WAVE LOGO EMBROIDERY'
+      description: 'Organic cotton t-shirt with minimalist wave logo embroidery'
     },
     {
       id: '2',
-      name: 'RITUAL FREQUENCIES TEE',
+      name: 'Lowtide Logo Tee',
       price: 42,
       image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=400&fit=crop',
-      description: 'CLASSIC BLACK TEE WITH SUBTLE WAVE PATTERN PRINT'
+      description: 'Classic black tee with subtle wave pattern print'
     },
     {
       id: '3',
-      name: 'OCEAN RITUAL WHITE TEE',
+      name: 'Ritual White Tee',
       price: 40,
       image: 'https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=400&h=400&fit=crop',
-      description: 'PREMIUM WHITE COTTON WITH EMBOSSED WAVE LOGO'
+      description: 'Premium white cotton with embossed wave logo'
     },
     {
       id: '4',
-      name: 'COASTAL MEDITATION TEE',
+      name: 'Ocean Wave Tee',
       price: 48,
       image: 'https://images.unsplash.com/photo-1583743814966-8936f37f8d2b?w=400&h=400&fit=crop',
-      description: 'OVERSIZED FIT WITH HAND-DRAWN WAVE GRAPHIC'
-    },
-    {
-      id: '5',
-      name: 'SUNSET SESSIONS HOODIE',
-      price: 75,
-      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop',
-      description: 'PREMIUM HOODIE WITH GRADIENT SUNSET DESIGN'
-    },
-    {
-      id: '6',
-      name: 'RITUAL TANK TOP',
-      price: 35,
-      image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop',
-      description: 'BREATHABLE TANK WITH MINIMALIST LOGO PLACEMENT'
+      description: 'Oversized fit with hand-drawn wave graphic'
     }
   ];
 
   const handlePurchase = (product: Product) => {
     if (!user) {
       toast({
-        title: "SIGN IN REQUIRED",
-        description: "PLEASE SIGN IN TO MAKE A PURCHASE.",
+        title: "Sign in required",
+        description: "Please sign in to make a purchase.",
         variant: "destructive",
       });
       navigate('/login');
       return;
     }
 
+    // Here you would integrate with payment processing
     toast({
-      title: "PURCHASE INITIATED",
-      description: `ADDED ${product.name} TO YOUR CART.`,
+      title: "Purchase initiated",
+      description: `Added ${product.name} to your cart.`,
     });
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section - More elegant with epic landscape */}
-      <section className="relative h-[80vh] overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1920&h=1080&fit=crop"
-          alt="Epic landscape with car - lifestyle inspiration"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
-          <div className="max-w-4xl space-y-8">
-            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-sm text-sm font-body-medium tracking-wider animate-fade-in">
-              NOW LIVE
-            </div>
-            <h1 className="font-display text-6xl md:text-8xl mb-8 tracking-wide animate-fade-in delay-300">RITUAL WEAR</h1>
-            <p className="font-body text-xl md:text-2xl animate-fade-in delay-500 leading-relaxed max-w-3xl mx-auto">
-              CAREFULLY CURATED OBJECTS FOR YOUR DAILY RITUALS. EACH PIECE IS SELECTED TO ENHANCE YOUR CONNECTION TO THE PRESENT MOMENT.
-            </p>
-            <div className="animate-fade-in delay-700">
-              <button className="inline-flex items-center justify-center px-8 py-4 font-body-medium text-sm bg-white text-black rounded-sm shadow-sm transition-all duration-300 hover:bg-white/90 hover:scale-105 uppercase tracking-wide">
-                SHOP NOW
-              </button>
-            </div>
-          </div>
+    <div className="min-h-screen bg-background pt-24 pb-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16">
+          <h1 className="font-display text-5xl text-foreground mb-6">Shop</h1>
+          <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+            Carefully curated objects for your daily rituals. Each piece is selected to enhance your connection to the present moment.
+          </p>
         </div>
-      </section>
 
-      {/* Products Section */}
-      <section className="py-32 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="font-display text-4xl md:text-5xl text-foreground mb-6 tracking-wide">COLLECTION</h2>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              ESSENTIAL PIECES FOR THE MODERN RITUALIST
-            </p>
-          </div>
-
-          <div className="grid-elegant">
-            {products.map((product, index) => (
-              <div key={product.id} className="card-elegant group cursor-pointer scroll-fade-in transform transition-all duration-700 hover:scale-105" style={{ animationDelay: `${index * 100}ms` }}>
-                <div className="aspect-square overflow-hidden rounded-sm mb-6">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                
-                <div className="space-y-4">
-                  <h3 className="font-display text-xl text-foreground uppercase tracking-wider">{product.name}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center justify-between pt-4">
-                    <span className="font-body-medium text-xl text-foreground">${product.price}</span>
-                    <button
-                      onClick={() => handlePurchase(product)}
-                      className="inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 hover:scale-105 uppercase tracking-wide"
-                    >
-                      ADD TO CART
-                    </button>
-                  </div>
+        <div className="grid-elegant">
+          {products.map((product) => (
+            <div key={product.id} className="card-elegant group cursor-pointer">
+              <div className="aspect-square overflow-hidden rounded-sm mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              
+              <div className="space-y-3">
+                <h3 className="font-display text-xl text-foreground">{product.name}</h3>
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                  {product.description}
+                </p>
+                <div className="flex items-center justify-between pt-2">
+                  <span className="font-body-medium text-lg text-foreground">${product.price}</span>
+                  <button
+                    onClick={() => handlePurchase(product)}
+                    className="btn-animated-primary"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-      </section>
 
-      {!user && (
-        <section className="py-20 px-6 bg-muted/10">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="font-display text-3xl text-foreground mb-4 tracking-wide">JOIN THE RITUAL</h3>
-            <p className="font-body text-lg text-muted-foreground mb-8 leading-relaxed">
-              CREATE AN ACCOUNT TO COMPLETE YOUR PURCHASE AND ACCESS EXCLUSIVE PRODUCTS.
+        {!user && (
+          <div className="text-center mt-16 p-8 border border-border rounded-sm bg-muted/20">
+            <h3 className="font-display text-xl text-foreground mb-2">Sign in to purchase</h3>
+            <p className="font-body text-muted-foreground mb-4">
+              Create an account to complete your purchase and access exclusive products.
             </p>
             <button
               onClick={() => navigate('/login')}
-              className="inline-flex items-center justify-center px-8 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 hover:scale-105 uppercase tracking-wide"
+              className="btn-animated-primary"
             >
-              SIGN IN
+              Sign In
             </button>
           </div>
-        </section>
-      )}
+        )}
+      </div>
     </div>
   );
 }
