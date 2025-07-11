@@ -1,179 +1,408 @@
+
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import VideoHero from '@/components/VideoHero';
-import { Button } from '@/components/ui/button';
+import { useEffect, useRef } from 'react';
 
 const Index = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+
   const recentSessions = [
     {
       id: '1',
-      title: 'Ritual Frequencies',
-      artist: 'Lowtide Collective',
+      title: 'RITUAL FREQUENCIES',
+      artist: 'LOWTIDE COLLECTIVE',
       image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
-      duration: '45 min',
+      duration: '45 MIN',
       videoUrl: 'https://youtu.be/rxAe3xqyeSA'
     },
     {
       id: '2',
-      title: 'Coastal Meditation',
-      artist: 'Ocean Collective',
+      title: 'COASTAL MEDITATION',
+      artist: 'OCEAN COLLECTIVE',
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop',
-      duration: '42 min'
+      duration: '42 MIN'
     },
     {
       id: '3',
-      title: 'Forest Frequencies', 
-      artist: 'Nature Lab',
+      title: 'FOREST FREQUENCIES', 
+      artist: 'NATURE LAB',
       image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
-      duration: '58 min'
+      duration: '58 MIN'
     },
     {
       id: '4',
-      title: 'Urban Tranquility',
-      artist: 'City Zen',
+      title: 'URBAN TRANQUILITY',
+      artist: 'CITY ZEN',
       image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
-      duration: '36 min'
+      duration: '36 MIN'
     }
   ];
 
   const upcomingEvents = [
     {
       id: '1',
-      title: 'Sunset Sessions Vol. 3',
-      date: 'March 15',
-      location: 'Malibu Beach'
+      title: 'SUNSET SESSIONS VOL. 3',
+      date: 'MARCH 15',
+      location: 'MALIBU BEACH'
     },
     {
       id: '2',
-      title: 'Forest Ritual',
-      date: 'April 22',
-      location: 'Muir Woods'
+      title: 'FOREST RITUAL',
+      date: 'APRIL 22',
+      location: 'MUIR WOODS'
     }
   ];
 
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div ref={containerRef} className="min-h-screen bg-background">
       {/* Hero Video Section */}
-      <VideoHero isLive={true}>
-        <h1 className="font-display text-4xl md:text-6xl mb-4 text-white animate-fade-in">
-          where music becomes a ritual
-        </h1>
-        <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in delay-300">
-          immersive audio experiences crafted for mindful listening and deep connection
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
-          <Link to="/live">
-            <button className="btn-animated-primary">
-              join live session
-            </button>
-          </Link>
-          <Link to="/archive">
-            <button className="btn-animated-ghost">
-              explore archive
-            </button>
-          </Link>
-        </div>
-      </VideoHero>
+      <motion.section 
+        className="h-screen relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <VideoHero isLive={true}>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.h1 
+              className="font-display text-4xl md:text-7xl mb-6 text-white tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              WHERE MUSIC BECOMES A RITUAL
+            </motion.h1>
+            <motion.p 
+              className="font-body text-lg md:text-xl text-white/90 mb-12 leading-relaxed tracking-wide"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              IMMERSIVE AUDIO EXPERIENCES CRAFTED FOR MINDFUL LISTENING AND DEEP CONNECTION
+            </motion.p>
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+            >
+              <Link to="/live">
+                <motion.button 
+                  className="btn-animated-primary tracking-widest"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  JOIN LIVE SESSION
+                </motion.button>
+              </Link>
+              <Link to="/archive">
+                <motion.button 
+                  className="btn-animated-ghost tracking-widest text-white border-white hover:bg-white hover:text-foreground"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  EXPLORE ARCHIVE
+                </motion.button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </VideoHero>
+      </motion.section>
 
       {/* Recent Sessions Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">recent sessions</h2>
-            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              discover our latest audio journeys, each crafted to transport you to a different state of consciousness
-            </p>
-          </div>
+      <motion.section 
+        className="min-h-screen py-32 px-6 flex items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
+      >
+        <div className="max-w-7xl mx-auto w-full">
+          <motion.div 
+            className="text-center mb-20"
+            variants={fadeInUpVariants}
+          >
+            <motion.h2 
+              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
+              onHoverStart={() => {}}
+              whileHover={{ 
+                fontFamily: '"Crimson Text", serif',
+                transition: { duration: 0.3 }
+              }}
+            >
+              RECENT SESSIONS
+            </motion.h2>
+            <motion.p 
+              className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
+              variants={fadeInUpVariants}
+            >
+              DISCOVER OUR LATEST AUDIO JOURNEYS, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
+            </motion.p>
+          </motion.div>
 
-          <div className="grid-elegant">
-            {recentSessions.map((session) => (
-              <Link key={session.id} to="/archive" className="group">
-                <div className="card-elegant">
-                  <div className="aspect-video overflow-hidden rounded-sm mb-4">
-                    <img
-                      src={session.image}
-                      alt={session.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300">
-                      {session.title}
-                    </h3>
-                    <div className="flex items-center justify-between">
-                      <p className="font-body text-sm text-muted-foreground">by {session.artist}</p>
-                      <span className="font-body text-xs text-muted-foreground">{session.duration}</span>
+          <motion.div 
+            className="grid-elegant"
+            variants={staggerContainer}
+          >
+            {recentSessions.map((session, index) => (
+              <motion.div
+                key={session.id}
+                variants={fadeInUpVariants}
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Link to="/archive" className="group block">
+                  <div className="card-elegant overflow-hidden">
+                    <motion.div 
+                      className="aspect-video overflow-hidden rounded-sm mb-6"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <img
+                        src={session.image}
+                        alt={session.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </motion.div>
+                    <div className="space-y-3">
+                      <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300 tracking-wide">
+                        {session.title}
+                      </h3>
+                      <div className="flex items-center justify-between">
+                        <p className="font-body text-sm text-muted-foreground tracking-wide">BY {session.artist}</p>
+                        <span className="font-body text-xs text-muted-foreground tracking-wider">{session.duration}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-16"
+            variants={fadeInUpVariants}
+          >
             <Link to="/archive">
-              <button className="btn-animated-secondary">
-                view all sessions
-              </button>
+              <motion.button 
+                className="btn-animated-secondary tracking-widest"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                VIEW ALL SESSIONS
+              </motion.button>
             </Link>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Experiences Section */}
+      <motion.section 
+        className="min-h-screen bg-muted/10 py-32 px-6 flex items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
+      >
+        <div className="max-w-7xl mx-auto w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              variants={fadeInUpVariants}
+              className="space-y-8"
+            >
+              <motion.h2 
+                className="font-display text-5xl md:text-7xl text-foreground tracking-wider"
+                whileHover={{ 
+                  fontFamily: '"Crimson Text", serif',
+                  transition: { duration: 0.3 }
+                }}
+              >
+                EXPERIENCES
+              </motion.h2>
+              <motion.p 
+                className="font-body text-lg text-muted-foreground leading-relaxed tracking-wide"
+                variants={fadeInUpVariants}
+              >
+                IMMERSE YOURSELF IN CAREFULLY CURATED SONIC LANDSCAPES THAT BLUR THE LINES BETWEEN MEDITATION, MUSIC, AND RITUAL. EACH SESSION IS DESIGNED TO CREATE SPACE FOR INTROSPECTION AND CONNECTION WITH THE PRESENT MOMENT.
+              </motion.p>
+              <motion.div variants={fadeInUpVariants}>
+                <Link to="/rituals">
+                  <motion.button 
+                    className="btn-animated-primary tracking-widest"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    EXPLORE RITUALS
+                  </motion.button>
+                </Link>
+              </motion.div>
+            </motion.div>
+            
+            <motion.div
+              variants={fadeInUpVariants}
+              className="aspect-square overflow-hidden rounded-sm"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
+            >
+              <img
+                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=600&fit=crop"
+                alt="Surfing Experience"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Upcoming Events Section */}
-      <section className="py-20 px-6 bg-muted/20">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">upcoming events</h2>
-            <p className="font-body text-lg text-muted-foreground">
-              join us for intimate gatherings where music and nature converge
-            </p>
-          </div>
+      <motion.section 
+        className="min-h-screen py-32 px-6 flex items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
+      >
+        <div className="max-w-5xl mx-auto w-full">
+          <motion.div 
+            className="text-center mb-20"
+            variants={fadeInUpVariants}
+          >
+            <motion.h2 
+              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
+              whileHover={{ 
+                fontFamily: '"Crimson Text", serif',
+                transition: { duration: 0.3 }
+              }}
+            >
+              UPCOMING EVENTS
+            </motion.h2>
+            <motion.p 
+              className="font-body text-lg text-muted-foreground tracking-wide"
+              variants={fadeInUpVariants}
+            >
+              JOIN US FOR INTIMATE GATHERINGS WHERE MUSIC AND NATURE CONVERGE
+            </motion.p>
+          </motion.div>
 
-          <div className="space-y-6">
+          <motion.div 
+            className="space-y-8"
+            variants={staggerContainer}
+          >
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="card-elegant">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <motion.div 
+                key={event.id} 
+                className="card-elegant"
+                variants={fadeInUpVariants}
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                   <div>
-                    <h3 className="font-display text-xl text-foreground mb-1">{event.title}</h3>
-                    <p className="font-body text-muted-foreground">{event.location}</p>
+                    <h3 className="font-display text-2xl text-foreground mb-2 tracking-wide">{event.title}</h3>
+                    <p className="font-body text-muted-foreground tracking-wide">{event.location}</p>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <span className="font-body-medium text-accent">{event.date}</span>
-                    <button className="btn-animated-primary">
-                      Get Tickets
-                    </button>
+                  <div className="flex items-center gap-6">
+                    <span className="font-body-medium text-xl text-accent tracking-wider">{event.date}</span>
+                    <motion.button 
+                      className="btn-animated-primary tracking-widest"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      GET TICKETS
+                    </motion.button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-12">
+          <motion.div 
+            className="text-center mt-16"
+            variants={fadeInUpVariants}
+          >
             <Link to="/events">
-              <button className="btn-animated-secondary">
-                View All Events
-              </button>
+              <motion.button 
+                className="btn-animated-secondary tracking-widest"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                VIEW ALL EVENTS
+              </motion.button>
             </Link>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Philosophy Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-4xl text-foreground mb-8">our philosophy</h2>
-          <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-            at lowtide ritual, we believe in the transformative power of mindful listening. 
-            each session is carefully curated to create space for introspection, connection, 
-            and the rediscovery of wonder in the everyday.
-          </p>
+      <motion.section 
+        className="min-h-screen bg-muted/10 py-32 px-6 flex items-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerContainer}
+      >
+        <div className="max-w-5xl mx-auto text-center w-full">
+          <motion.h2 
+            className="font-display text-5xl md:text-7xl text-foreground mb-12 tracking-wider"
+            variants={fadeInUpVariants}
+            whileHover={{ 
+              fontFamily: '"Crimson Text", serif',
+              transition: { duration: 0.3 }
+            }}
+          >
+            OUR PHILOSOPHY
+          </motion.h2>
+          <motion.p 
+            className="font-body text-xl text-muted-foreground leading-relaxed mb-12 tracking-wide"
+            variants={fadeInUpVariants}
+          >
+            AT LOWTIDE RITUAL, WE BELIEVE IN THE TRANSFORMATIVE POWER OF MINDFUL LISTENING. 
+            EACH SESSION IS CAREFULLY CURATED TO CREATE SPACE FOR INTROSPECTION, CONNECTION, 
+            AND THE REDISCOVERY OF WONDER IN THE EVERYDAY.
+          </motion.p>
+          <motion.div variants={fadeInUpVariants}>
             <Link to="/rituals">
-              <button className="btn-animated-primary">
-                explore rituals
-              </button>
+              <motion.button 
+                className="btn-animated-primary tracking-widest"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                EXPLORE RITUALS
+              </motion.button>
             </Link>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
