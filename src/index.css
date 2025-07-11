@@ -236,4 +236,29 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
   .text-reveal.animate {
     @apply opacity-100 translate-y-0;
   }
+
+  /* Fade in animation with delays */
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
 }

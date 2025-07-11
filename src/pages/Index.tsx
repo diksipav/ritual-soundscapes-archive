@@ -54,21 +54,21 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Hero Video Section */}
       <VideoHero isLive={true}>
-        <h1 className="font-display text-4xl md:text-6xl mb-4 text-white">
-          Where Music Becomes a Ritual
+        <h1 className="font-display text-4xl md:text-6xl mb-4 text-white animate-fade-in">
+          where music becomes a ritual
         </h1>
-        <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-          Immersive audio experiences crafted for mindful listening and deep connection
+        <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed animate-fade-in delay-300">
+          immersive audio experiences crafted for mindful listening and deep connection
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
           <Link to="/live">
             <button className="btn-animated-primary">
-              Join Live Session
+              join live session
             </button>
           </Link>
           <Link to="/archive">
             <button className="btn-animated-ghost">
-              Explore Archive
+              explore archive
             </button>
           </Link>
         </div>
@@ -78,9 +78,9 @@ const Index = () => {
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">Recent Sessions</h2>
+            <h2 className="font-display text-4xl text-foreground mb-4">recent sessions</h2>
             <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover our latest audio journeys, each crafted to transport you to a different state of consciousness
+              discover our latest audio journeys, each crafted to transport you to a different state of consciousness
             </p>
           </div>
 
@@ -112,7 +112,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Link to="/archive">
               <button className="btn-animated-secondary">
-                View All Sessions
+                view all sessions
               </button>
             </Link>
           </div>
@@ -123,9 +123,9 @@ const Index = () => {
       <section className="py-20 px-6 bg-muted/20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-display text-4xl text-foreground mb-4">Upcoming Events</h2>
+            <h2 className="font-display text-4xl text-foreground mb-4">upcoming events</h2>
             <p className="font-body text-lg text-muted-foreground">
-              Join us for intimate gatherings where music and nature converge
+              join us for intimate gatherings where music and nature converge
             </p>
           </div>
 
@@ -161,15 +161,15 @@ const Index = () => {
       {/* Philosophy Section */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-4xl text-foreground mb-8">Our Philosophy</h2>
+          <h2 className="font-display text-4xl text-foreground mb-8">our philosophy</h2>
           <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-            At Lowtide Ritual, we believe in the transformative power of mindful listening. 
-            Each session is carefully curated to create space for introspection, connection, 
+            at lowtide ritual, we believe in the transformative power of mindful listening. 
+            each session is carefully curated to create space for introspection, connection, 
             and the rediscovery of wonder in the everyday.
           </p>
             <Link to="/rituals">
               <button className="btn-animated-primary">
-                Explore Rituals
+                explore rituals
               </button>
             </Link>
         </div>

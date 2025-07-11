@@ -30,15 +30,15 @@ export default function VideoHero({
   };
 
   return (
-    <section className="video-hero">
+    <section className="video-hero relative h-screen overflow-hidden pt-20">
       <iframe
         ref={videoRef}
         src={videoSrc}
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        className="absolute inset-0 w-full h-[120%] object-cover pointer-events-none"
         frameBorder="0"
         allow="autoplay; encrypted-media"
         allowFullScreen
-        style={{ transform: 'scale(1.1)' }}
+        style={{ transform: 'scale(1.2) translateY(-10%)' }}
       />
       
       {/* Dark overlay for text readability */}
