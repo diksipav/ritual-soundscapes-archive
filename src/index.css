@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
@@ -176,10 +177,6 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply opacity-100 translate-y-0;
   }
 
-  .scroll-fade-in.delay-300 {
-    @apply delay-300;
-  }
-
   /* Initialize scroll animations */
   @media (prefers-reduced-motion: no-preference) {
     .scroll-fade-in {
@@ -281,4 +278,28 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
   .delay-500 {
     animation-delay: 500ms;
   }
+
+  /* Logo animation styles */
+  .logo-center {
+    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .logo-scrolled {
+    @apply fixed top-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none;
+    font-size: 1.5rem;
+    color: hsl(var(--accent));
+  }
+
+  /* Smooth text reveal animations */
+  .stagger-animation {
+    animation-fill-mode: both;
+  }
+
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
 }
