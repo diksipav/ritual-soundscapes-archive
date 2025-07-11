@@ -1,12 +1,171 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Link } from 'react-router-dom';
+import VideoHero from '@/components/VideoHero';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
+  const recentSessions = [
+    {
+      id: '1',
+      title: 'Coastal Meditation',
+      artist: 'Ocean Collective',
+      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop',
+      duration: '42 min'
+    },
+    {
+      id: '2',
+      title: 'Forest Frequencies', 
+      artist: 'Nature Lab',
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
+      duration: '58 min'
+    },
+    {
+      id: '3',
+      title: 'Urban Tranquility',
+      artist: 'City Zen',
+      image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
+      duration: '36 min'
+    }
+  ];
+
+  const upcomingEvents = [
+    {
+      id: '1',
+      title: 'Sunset Sessions Vol. 3',
+      date: 'March 15',
+      location: 'Malibu Beach'
+    },
+    {
+      id: '2',
+      title: 'Forest Ritual',
+      date: 'April 22',
+      location: 'Muir Woods'
+    }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Hero Video Section */}
+      <VideoHero isLive={true}>
+        <h1 className="font-display text-4xl md:text-6xl mb-4 text-white">
+          Where Music Meets Nature
+        </h1>
+        <p className="font-body text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+          Immersive audio experiences crafted for mindful listening and deep connection
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link to="/live">
+            <Button className="btn-primary bg-white text-black hover:bg-white/90">
+              Join Live Session
+            </Button>
+          </Link>
+          <Link to="/archive">
+            <Button className="btn-ghost text-white border-white hover:bg-white/10">
+              Explore Archive
+            </Button>
+          </Link>
+        </div>
+      </VideoHero>
+
+      {/* Recent Sessions Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl text-foreground mb-4">Recent Sessions</h2>
+            <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+              Discover our latest audio journeys, each crafted to transport you to a different state of consciousness
+            </p>
+          </div>
+
+          <div className="grid-elegant">
+            {recentSessions.map((session) => (
+              <Link key={session.id} to="/archive" className="group">
+                <div className="card-elegant">
+                  <div className="aspect-video overflow-hidden rounded-sm mb-4">
+                    <img
+                      src={session.image}
+                      alt={session.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300">
+                      {session.title}
+                    </h3>
+                    <div className="flex items-center justify-between">
+                      <p className="font-body text-sm text-muted-foreground">by {session.artist}</p>
+                      <span className="font-body text-xs text-muted-foreground">{session.duration}</span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/archive">
+              <Button className="btn-secondary">
+                View All Sessions
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <section className="py-20 px-6 bg-muted/20">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl text-foreground mb-4">Upcoming Events</h2>
+            <p className="font-body text-lg text-muted-foreground">
+              Join us for intimate gatherings where music and nature converge
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {upcomingEvents.map((event) => (
+              <div key={event.id} className="card-elegant">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <h3 className="font-display text-xl text-foreground mb-1">{event.title}</h3>
+                    <p className="font-body text-muted-foreground">{event.location}</p>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <span className="font-body-medium text-accent">{event.date}</span>
+                    <Button className="btn-primary">
+                      Get Tickets
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/events">
+              <Button className="btn-secondary">
+                View All Events
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-display text-4xl text-foreground mb-8">Our Philosophy</h2>
+          <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            At Lowtide Ritual, we believe in the transformative power of mindful listening. 
+            Each session is carefully curated to create space for introspection, connection, 
+            and the rediscovery of wonder in the everyday.
+          </p>
+          <Link to="/rituals">
+            <Button className="btn-primary">
+              Explore Rituals
+            </Button>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
