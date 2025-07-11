@@ -177,7 +177,7 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
   }
 
   .scroll-fade-in.delay-300 {
-    @apply transition-delay-300;
+    @apply delay-300;
   }
 
   /* Initialize scroll animations */
