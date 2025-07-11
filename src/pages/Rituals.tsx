@@ -33,10 +33,10 @@ export default function Rituals() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Banner - Smaller */}
-      <section className="relative h-[40vh] overflow-hidden">
+      {/* Hero Banner - Much smaller */}
+      <section className="relative h-[30vh] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1920&h=800&fit=crop"
+          src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1920&h=600&fit=crop"
           alt="Ritual landscape"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -44,7 +44,7 @@ export default function Rituals() {
         
         <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
           <div className="max-w-3xl">
-            <h1 className="font-display text-5xl md:text-7xl mb-4 tracking-wide animate-fade-in">RITUALS</h1>
+            <h1 className="font-display text-4xl md:text-6xl mb-4 tracking-wide animate-fade-in">RITUALS</h1>
             <p className="font-body text-lg md:text-xl animate-fade-in delay-300 leading-relaxed">
               CURATED PRACTICES TO CULTIVATE PRESENCE, AWARENESS, AND CONNECTION IN YOUR DAILY LIFE
             </p>
@@ -59,16 +59,16 @@ export default function Rituals() {
             {rituals.map((ritual, index) => (
               <div 
                 key={ritual.id}
-                className={`flex flex-col lg:flex-row gap-8 items-center card-elegant scroll-fade-in ${
+                className={`flex flex-col lg:flex-row gap-8 items-center card-elegant scroll-fade-in transform transition-all duration-700 hover:scale-102 ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="lg:w-2/5">
                   <img
                     src={ritual.image}
                     alt={ritual.title}
-                    className="w-full h-48 lg:h-64 object-cover rounded-sm"
+                    className="w-full h-48 lg:h-64 object-cover rounded-sm transition-transform duration-700 hover:scale-105"
                   />
                 </div>
                 
@@ -82,7 +82,7 @@ export default function Rituals() {
                     {ritual.description}
                   </p>
                   
-                  <button className="btn-animated-primary">
+                  <button className="inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 hover:scale-105 uppercase tracking-wide">
                     BEGIN RITUAL
                   </button>
                 </div>
@@ -96,7 +96,7 @@ export default function Rituals() {
               <p className="font-body text-muted-foreground mb-4">
                 COMBINE ELEMENTS FROM OUR PRACTICES TO DESIGN A PERSONAL RITUAL THAT RESONATES WITH YOUR JOURNEY.
               </p>
-              <button className="btn-animated-secondary">
+              <button className="inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-foreground bg-background border border-border rounded-sm shadow-sm transition-all duration-300 hover:bg-muted hover:scale-105 uppercase tracking-wide">
                 RITUAL BUILDER
               </button>
             </div>

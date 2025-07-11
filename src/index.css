@@ -168,7 +168,7 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply absolute left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 object-cover;
   }
 
-  /* Elegant scroll animations */
+  /* Enhanced scroll animations */
   .scroll-fade-in {
     @apply opacity-0 translate-y-12 transition-all duration-1000 ease-out;
   }
@@ -186,7 +186,7 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
 
   /* Card styles */
   .card-elegant {
-    @apply rounded-sm border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+    @apply rounded-sm border border-border bg-card p-6 shadow-sm transition-all duration-500 hover:shadow-lg hover:-translate-y-1;
   }
 
   /* Live indicator */
@@ -199,7 +199,7 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply h-2 w-2 animate-pulse rounded-full bg-white;
   }
 
-  /* Flashing live indicator */
+  /* Enhanced flashing live indicator */
   .live-indicator-flashing {
     @apply relative inline-flex items-center gap-2 rounded-full bg-red-500 px-4 py-2 text-sm font-body-medium text-white transition-all duration-300;
     animation: flash 2s infinite;
@@ -212,37 +212,12 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
 
   @keyframes flash {
     0%, 50% { opacity: 1; }
-    25%, 75% { opacity: 0.6; }
-  }
-
-  /* Animated buttons */
-  .btn-animated-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
-  }
-
-  .btn-animated-primary:hover {
-    @apply font-display text-accent scale-105;
-  }
-
-  .btn-animated-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-foreground bg-background border border-border rounded-sm shadow-sm transition-all duration-300 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
-  }
-
-  .btn-animated-secondary:hover {
-    @apply font-display text-accent scale-105;
-  }
-
-  .btn-animated-ghost {
-    @apply inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm transition-all duration-300 hover:bg-muted/50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50;
-  }
-
-  .btn-animated-ghost:hover {
-    @apply font-display text-accent scale-105;
+    25%, 75% { opacity: 0.7; }
   }
 
   /* Grid layouts */
   .grid-elegant {
-    @apply grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+    @apply grid gap-8 md:grid-cols-2 lg:grid-cols-3;
   }
 
   /* Text animations */
@@ -254,11 +229,11 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
     @apply opacity-100 translate-y-0;
   }
 
-  /* Fade in animation with delays */
+  /* Enhanced fade in animation with delays */
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     100% {
       opacity: 1;
@@ -267,7 +242,7 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
   }
 
   .animate-fade-in {
-    animation: fade-in 0.8s ease-out forwards;
+    animation: fade-in 1s ease-out forwards;
     opacity: 0;
   }
 
@@ -277,6 +252,10 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
 
   .delay-500 {
     animation-delay: 500ms;
+  }
+
+  .delay-700 {
+    animation-delay: 700ms;
   }
 
   /* Logo animation styles */
@@ -302,4 +281,17 @@ Luxury minimalist aesthetic inspired by Audo Copenhagen with NTS.live functional
   .stagger-4 { animation-delay: 0.4s; }
   .stagger-5 { animation-delay: 0.5s; }
   .stagger-6 { animation-delay: 0.6s; }
+
+  /* Enhanced hover effects */
+  .hover-scale-102 {
+    @apply transition-transform duration-300 hover:scale-102;
+  }
+
+  .hover-scale-105 {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-scale-110 {
+    @apply transition-transform duration-300 hover:scale-110;
+  }
 }

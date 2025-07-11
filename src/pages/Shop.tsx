@@ -89,21 +89,29 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
+      {/* Hero Section - More elegant with epic landscape */}
+      <section className="relative h-[80vh] overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1920&h=1080&fit=crop"
-          alt="Car overlooking epic landscape"
+          alt="Epic landscape with car - lifestyle inspiration"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/50" />
         
-        <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
-          <div className="max-w-3xl">
-            <h1 className="font-display text-6xl md:text-8xl mb-6 tracking-wide animate-fade-in">RITUAL WEAR</h1>
-            <p className="font-body text-xl md:text-2xl animate-fade-in delay-300 leading-relaxed">
+        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
+          <div className="max-w-4xl space-y-8">
+            <div className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-sm text-sm font-body-medium tracking-wider animate-fade-in">
+              NOW LIVE
+            </div>
+            <h1 className="font-display text-6xl md:text-8xl mb-8 tracking-wide animate-fade-in delay-300">RITUAL WEAR</h1>
+            <p className="font-body text-xl md:text-2xl animate-fade-in delay-500 leading-relaxed max-w-3xl mx-auto">
               CAREFULLY CURATED OBJECTS FOR YOUR DAILY RITUALS. EACH PIECE IS SELECTED TO ENHANCE YOUR CONNECTION TO THE PRESENT MOMENT.
             </p>
+            <div className="animate-fade-in delay-700">
+              <button className="inline-flex items-center justify-center px-8 py-4 font-body-medium text-sm bg-white text-black rounded-sm shadow-sm transition-all duration-300 hover:bg-white/90 hover:scale-105 uppercase tracking-wide">
+                SHOP NOW
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -120,7 +128,7 @@ export default function Shop() {
 
           <div className="grid-elegant">
             {products.map((product, index) => (
-              <div key={product.id} className="card-elegant group cursor-pointer scroll-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+              <div key={product.id} className="card-elegant group cursor-pointer scroll-fade-in transform transition-all duration-700 hover:scale-105" style={{ animationDelay: `${index * 100}ms` }}>
                 <div className="aspect-square overflow-hidden rounded-sm mb-6">
                   <img
                     src={product.image}
@@ -138,7 +146,7 @@ export default function Shop() {
                     <span className="font-body-medium text-xl text-foreground">${product.price}</span>
                     <button
                       onClick={() => handlePurchase(product)}
-                      className="btn-animated-primary"
+                      className="inline-flex items-center justify-center px-6 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 hover:scale-105 uppercase tracking-wide"
                     >
                       ADD TO CART
                     </button>
@@ -159,7 +167,7 @@ export default function Shop() {
             </p>
             <button
               onClick={() => navigate('/login')}
-              className="btn-animated-primary"
+              className="inline-flex items-center justify-center px-8 py-3 font-body-medium text-sm text-primary-foreground bg-primary rounded-sm shadow-sm transition-all duration-300 hover:bg-primary/90 hover:scale-105 uppercase tracking-wide"
             >
               SIGN IN
             </button>

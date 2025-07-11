@@ -43,12 +43,12 @@ export default function VideoHero({
       />
       
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/40" />
       
-      {/* Mute button - moved lower */}
+      {/* Mute button - positioned lower */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-16 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors pointer-events-auto backdrop-blur-sm"
+        className="absolute bottom-8 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-all duration-300 pointer-events-auto backdrop-blur-sm hover:scale-110"
       >
         {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
@@ -56,7 +56,7 @@ export default function VideoHero({
       {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
         {isLive && (
-          <Link to="/live" className="live-indicator-flashing mb-8 cursor-pointer hover:scale-105 transition-transform">
+          <Link to="/live" className="live-indicator-flashing mb-8 cursor-pointer hover:scale-105 transition-transform duration-300">
             <span>LIVE NOW</span>
           </Link>
         )}
