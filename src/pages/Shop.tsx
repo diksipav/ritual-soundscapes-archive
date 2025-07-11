@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
@@ -27,49 +28,62 @@ export default function Shop() {
   const products: Product[] = [
     {
       id: '1',
-      name: 'Wave Ritual Tee',
+      name: 'LOWTIDE RITUAL TEE',
       price: 45,
       image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop',
-      description: 'Organic cotton t-shirt with minimalist wave logo embroidery'
+      description: 'ORGANIC COTTON T-SHIRT WITH MINIMALIST WAVE LOGO EMBROIDERY'
     },
     {
       id: '2',
-      name: 'Lowtide Logo Tee',
+      name: 'RITUAL FREQUENCIES TEE',
       price: 42,
       image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=400&fit=crop',
-      description: 'Classic black tee with subtle wave pattern print'
+      description: 'CLASSIC BLACK TEE WITH SUBTLE WAVE PATTERN PRINT'
     },
     {
       id: '3',
-      name: 'Ritual White Tee',
+      name: 'OCEAN RITUAL WHITE TEE',
       price: 40,
       image: 'https://images.unsplash.com/photo-1527719327859-c6ce80353573?w=400&h=400&fit=crop',
-      description: 'Premium white cotton with embossed wave logo'
+      description: 'PREMIUM WHITE COTTON WITH EMBOSSED WAVE LOGO'
     },
     {
       id: '4',
-      name: 'Ocean Wave Tee',
+      name: 'COASTAL MEDITATION TEE',
       price: 48,
       image: 'https://images.unsplash.com/photo-1583743814966-8936f37f8d2b?w=400&h=400&fit=crop',
-      description: 'Oversized fit with hand-drawn wave graphic'
+      description: 'OVERSIZED FIT WITH HAND-DRAWN WAVE GRAPHIC'
+    },
+    {
+      id: '5',
+      name: 'SUNSET SESSIONS HOODIE',
+      price: 75,
+      image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400&h=400&fit=crop',
+      description: 'PREMIUM HOODIE WITH GRADIENT SUNSET DESIGN'
+    },
+    {
+      id: '6',
+      name: 'RITUAL TANK TOP',
+      price: 35,
+      image: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop',
+      description: 'BREATHABLE TANK WITH MINIMALIST LOGO PLACEMENT'
     }
   ];
 
   const handlePurchase = (product: Product) => {
     if (!user) {
       toast({
-        title: "Sign in required",
-        description: "Please sign in to make a purchase.",
+        title: "SIGN IN REQUIRED",
+        description: "PLEASE SIGN IN TO MAKE A PURCHASE.",
         variant: "destructive",
       });
       navigate('/login');
       return;
     }
 
-    // Here you would integrate with payment processing
     toast({
-      title: "Purchase initiated",
-      description: `Added ${product.name} to your cart.`,
+      title: "PURCHASE INITIATED",
+      description: `ADDED ${product.name} TO YOUR CART.`,
     });
   };
 
@@ -78,8 +92,8 @@ export default function Shop() {
       {/* Hero Section */}
       <section className="relative h-[70vh] overflow-hidden">
         <img 
-          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&h=1080&fit=crop"
-          alt="Ocean ritual"
+          src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?w=1920&h=1080&fit=crop"
+          alt="Car overlooking epic landscape"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />

@@ -1,3 +1,4 @@
+
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Volume2, VolumeX } from 'lucide-react';
@@ -30,7 +31,7 @@ export default function VideoHero({
   };
 
   return (
-    <section className="video-hero relative h-screen overflow-hidden pt-20">
+    <section className="video-hero relative h-screen overflow-hidden">
       <iframe
         ref={videoRef}
         src={videoSrc}
@@ -44,10 +45,10 @@ export default function VideoHero({
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30" />
       
-      {/* Mute button */}
+      {/* Mute button - moved lower */}
       <button
         onClick={toggleMute}
-        className="absolute bottom-6 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors pointer-events-auto backdrop-blur-sm"
+        className="absolute bottom-16 right-6 z-20 p-3 rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors pointer-events-auto backdrop-blur-sm"
       >
         {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
       </button>
