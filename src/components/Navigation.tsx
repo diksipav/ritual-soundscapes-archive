@@ -65,7 +65,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
       opacity: 0,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut",
         staggerChildren: 0.1,
         staggerDirection: -1
       }
@@ -74,7 +74,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        ease: "easeOut",
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
@@ -86,7 +86,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }
+      transition: { duration: 0.5, ease: "easeOut" }
     }
   };
 
@@ -175,7 +175,6 @@ export default function Navigation({ className = '' }: NavigationProps) {
             <motion.div 
               className="text-center"
               onClick={(e) => e.stopPropagation()}
-              variants={itemVariants}
             >
               <nav className="mb-16">
                 <motion.ul 
