@@ -85,48 +85,40 @@ const Index = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <VideoHero isLive={false}>
+        <VideoHero isLive={false} videoUrl="https://www.youtube.com/watch?v=rxAe3xqyeSA">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            {/* Creative Typography inspired by Swedish House Mafia cover */}
+            {/* Logo in upper center */}
             <motion.div 
-              className="mb-12"
+              className="mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              <div className="font-display text-6xl md:text-8xl text-white tracking-[0.3em] mb-4">
-                <div className="flex justify-center items-center gap-8 mb-2">
-                  <span className="transform -rotate-12">L</span>
-                  <span className="transform rotate-6">O</span>
-                  <span className="transform -rotate-3">W</span>
-                </div>
-                <div className="flex justify-center items-center gap-8 mb-2">
-                  <span className="transform rotate-12">T</span>
-                  <span className="transform -rotate-6">I</span>
-                  <span className="transform rotate-3">D</span>
-                  <span className="transform -rotate-12">E</span>
-                </div>
-                <div className="flex justify-center items-center gap-8">
-                  <span className="transform rotate-6">R</span>
-                  <span className="transform -rotate-3">I</span>
-                  <span className="transform rotate-12">T</span>
-                  <span className="transform -rotate-6">U</span>
-                  <span className="transform rotate-3">A</span>
-                  <span className="transform -rotate-12">L</span>
-                </div>
-              </div>
+              <h1 className="font-display text-4xl md:text-6xl text-white tracking-[0.3em] mb-8">
+                LOWTIDE RITUAL
+              </h1>
             </motion.div>
+
+            {/* Main Heading */}
+            <motion.h2 
+              className="font-display text-5xl md:text-7xl text-white mb-8 tracking-wider"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              WHERE MUSIC BECOMES A RITUAL
+            </motion.h2>
 
             <motion.p 
               className="font-body text-lg md:text-xl text-white/90 mb-12 leading-relaxed tracking-wide"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
             >
               IMMERSIVE AUDIO EXPERIENCES CRAFTED FOR MINDFUL LISTENING AND DEEP CONNECTION
             </motion.p>
@@ -134,7 +126,7 @@ const Index = () => {
               className="flex flex-col sm:flex-row gap-6 justify-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
+              transition={{ duration: 0.8, delay: 1.3 }}
             >
               <Link to="/live">
                 <motion.button 
@@ -305,7 +297,8 @@ const Index = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={(e) => {
-                        e.target.textContent = 'IT IS FREE :)';
+                        const target = e.target as HTMLButtonElement;
+                        target.textContent = 'IT IS FREE :)';
                       }}
                     >
                       GET TICKETS

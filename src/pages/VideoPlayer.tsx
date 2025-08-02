@@ -9,36 +9,41 @@ interface VideoSession {
   youtubeId: string;
   artist: string;
   description: string;
+  duration: string;
 }
 
 const videoSessions: VideoSession[] = [
   {
     id: '1',
-    title: 'SET 1 - RITUAL FREQUENCIES',
+    title: 'RÖVE - swedish house mafia (remix) wait so long (2) agents of time',
     youtubeId: 'rxAe3xqyeSA',
     artist: 'RÖVE',
-    description: 'An immersive journey through deep ambient textures and ethereal soundscapes.'
+    description: 'An immersive journey through deep ambient textures and ethereal soundscapes.',
+    duration: '58:22'
   },
   {
     id: '2',
-    title: 'SET 2 - DAWN MEDITATION',
+    title: 'RÖVE - wait so long (remix) swedish house mafia',
     youtubeId: 'b9Gi0JICt5Y',
     artist: 'RÖVE',
-    description: 'Early morning sound healing session captured at sunrise.'
+    description: 'Early morning sound healing session captured at sunrise.',
+    duration: '1:12:14'
   },
   {
     id: '3',
-    title: 'SET 3 - FOREST RHYTHMS',
+    title: 'RÖVE - agents of time',
     youtubeId: '0JjO27k8P44',
     artist: 'RÖVE',
-    description: 'Organic beats and nature sounds blend in perfect harmony.'
+    description: 'Organic beats and nature sounds blend in perfect harmony.',
+    duration: '1:01:07'
   },
   {
     id: '4',
-    title: 'SET 4 - COASTAL FREQUENCIES',
+    title: 'RÖVE - house session',
     youtubeId: 'cHT2laQvAYI',
     artist: 'RÖVE',
-    description: 'Ocean-inspired ambient compositions for deep listening.'
+    description: 'Ocean-inspired ambient compositions for deep listening.',
+    duration: '1:03:05'
   }
 ];
 
@@ -75,20 +80,25 @@ export default function VideoPlayer() {
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Header */}
+        {/* Header with Return Button */}
         <motion.header 
           className="p-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <button
-            onClick={() => navigate('/archive')}
-            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 font-body text-sm tracking-wider"
-          >
-            <ArrowLeft size={16} />
-            BACK TO ARCHIVE
-          </button>
+          <div className="flex items-center justify-between">
+            <button
+              onClick={() => navigate('/archive')}
+              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 font-body text-sm tracking-wider"
+            >
+              <ArrowLeft size={16} />
+              BACK TO ARCHIVE
+            </button>
+            <div className="text-right">
+              <div className="text-white/60 text-sm tracking-wider">{session.duration}</div>
+            </div>
+          </div>
         </motion.header>
 
         {/* Video Section */}
@@ -120,7 +130,7 @@ export default function VideoPlayer() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div>
-                <h1 className="font-display text-4xl md:text-6xl text-white mb-4 tracking-wider">
+                <h1 className="font-display text-3xl md:text-5xl text-white mb-4 tracking-wider">
                   {session.title}
                 </h1>
                 <p className="font-body text-xl text-purple-200 tracking-widest mb-2">
