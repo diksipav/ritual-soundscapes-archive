@@ -21,16 +21,13 @@ export default function Navigation({ className = '' }: NavigationProps) {
   const logoScale = useTransform(scrollY, [0, 200], [1, 0.7]);
   const logoY = useTransform(scrollY, [0, 200], [0, -10]);
   
-  // Show LTR after scrolling
   const showCompactLogo = useTransform(scrollY, [150, 300], [0, 1]);
 
   useEffect(() => {
-    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setUser(session?.user ?? null);
@@ -99,42 +96,34 @@ export default function Navigation({ className = '' }: NavigationProps) {
         }}
       >
         <div className="flex items-center justify-between">
-          {/* Dynamic Logo */}
-          <Link to="/" onClick={closeOverlay} className="relative">
-            <motion.div 
-              className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300"
-              style={{ scale: logoScale, y: logoY }}
-            >
-              {/* Full Logo - visible at top */}
-              <motion.span
-                style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}
-                className="absolute inset-0"
+          {/* Dynamic Logo - Always Centered */}
+          <div className="absolute left-1/2 transform -translate-x-1/2">
+            <Link to="/" onClick={closeOverlay}>
+              <motion.div 
+                className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300"
+                style={{ scale: logoScale, y: logoY }}
               >
-                LOWTIDE RITUAL
-              </motion.span>
-              
-              {/* Compact Logo - visible when scrolled */}
-              <motion.span
-                style={{ opacity: showCompactLogo }}
-                className="text-xl font-bold tracking-widest"
-              >
-                LTR
-              </motion.span>
-            </motion.div>
-          </Link>
+                {/* Full Logo - visible at top */}
+                <motion.span
+                  style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}
+                  className="absolute inset-0 whitespace-nowrap"
+                >
+                  LOWTIDE RITUAL
+                </motion.span>
+                
+                {/* Compact Logo - visible when scrolled */}
+                <motion.span
+                  style={{ opacity: showCompactLogo }}
+                  className="text-xl font-bold tracking-widest"
+                >
+                  LTR
+                </motion.span>
+              </motion.div>
+            </Link>
+          </div>
 
-          {/* YouTube Channel Button */}
-          <div className="hidden md:flex items-center gap-4">
-            <a
-              href="https://www.youtube.com/@LOWTIDERITUALMusic/videos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
-            >
-              <Youtube size={16} />
-              <span>YOUTUBE</span>
-            </a>
-            
+          {/* Menu Button - Desktop */}
+          <div className="hidden md:flex items-center gap-4 ml-auto">
             <motion.button
               onClick={toggleOverlay}
               className="flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
@@ -181,7 +170,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
         </div>
       </nav>
 
-      {/* Desktop Navigation Overlay with Advanced Animation */}
+      {/* Desktop Navigation Overlay */}
       <AnimatePresence>
         {isOverlayOpen && (
           <motion.div 
@@ -204,7 +193,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
                   animate="visible"
                   exit="hidden"
                 >
-                  {navLinks.map((link, index) => (
+                  {navLinks.map((link) => (
                     <motion.li key={link.href} variants={itemVariants}>
                       <Link
                         to={link.href}
@@ -215,6 +204,18 @@ export default function Navigation({ className = '' }: NavigationProps) {
                       </Link>
                     </motion.li>
                   ))}
+                  <motion.li variants={itemVariants}>
+                    <a
+                      href="https://www.youtube.com/@LOWTIDERITUALMusic/videos"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="nav-link text-3xl font-display tracking-widest hover:scale-105 transition-all duration-300 flex items-center gap-4 justify-center"
+                      onClick={closeOverlay}
+                    >
+                      <Youtube size={32} />
+                      YOUTUBE
+                    </a>
+                  </motion.li>
                   <motion.li variants={itemVariants}>
                     {user ? (
                       <div className="space-y-6">

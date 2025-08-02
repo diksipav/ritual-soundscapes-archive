@@ -15,50 +15,36 @@ const Index = () => {
   const recentSessions = [
     {
       id: '1',
-      title: 'SET 1 - RITUAL FREQUENCIES',
+      title: 'RÖVE - swedish house mafia (remix) wait so long (2) agents of time',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/rxAe3xqyeSA/maxresdefault.jpg',
-      duration: '45 MIN',
+      duration: '58:22',
       youtubeId: 'rxAe3xqyeSA'
     },
     {
       id: '2',
-      title: 'SET 2 - DAWN MEDITATION',
+      title: 'RÖVE - wait so long (remix) swedish house mafia',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/b9Gi0JICt5Y/maxresdefault.jpg',
-      duration: '42 MIN',
+      duration: '1:12:14',
       youtubeId: 'b9Gi0JICt5Y'
     },
     {
       id: '3',
-      title: 'SET 3 - FOREST RHYTHMS', 
+      title: 'RÖVE - agents of time', 
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/0JjO27k8P44/maxresdefault.jpg',
-      duration: '58 MIN',
+      duration: '1:01:07',
       youtubeId: '0JjO27k8P44'
     },
     {
       id: '4',
-      title: 'SET 4 - COASTAL FREQUENCIES',
+      title: 'RÖVE - house session',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/cHT2laQvAYI/maxresdefault.jpg',
-      duration: '38 MIN',
+      duration: '1:03:05',
       youtubeId: 'cHT2laQvAYI'
     }
-  ];
-
-  const ritualExperiences = [
-    'SOUND HEALING',
-    'ANIMAL FLOW',
-    'YOGA',
-    'CALISTHENICS',
-    'SURFING',
-    'ICE BATH',
-    'BREATHWORK',
-    'CONSCIOUS EATING',
-    'HUMAN / AI COLLABORATION',
-    'SKATE IN A BOWL',
-    'PUMPTRACK'
   ];
 
   const upcomingEvents = [
@@ -75,7 +61,7 @@ const Index = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }
+      transition: { duration: 0.8 }
     }
   };
 
@@ -99,21 +85,43 @@ const Index = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <VideoHero isLive={true}>
+        <VideoHero isLive={false}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <motion.h1 
-              className="font-display text-4xl md:text-7xl mb-6 text-white tracking-wider"
+            {/* Creative Typography inspired by Swedish House Mafia cover */}
+            <motion.div 
+              className="mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              WHERE MUSIC BECOMES A RITUAL
-            </motion.h1>
+              <div className="font-display text-6xl md:text-8xl text-white tracking-[0.3em] mb-4">
+                <div className="flex justify-center items-center gap-8 mb-2">
+                  <span className="transform -rotate-12">L</span>
+                  <span className="transform rotate-6">O</span>
+                  <span className="transform -rotate-3">W</span>
+                </div>
+                <div className="flex justify-center items-center gap-8 mb-2">
+                  <span className="transform rotate-12">T</span>
+                  <span className="transform -rotate-6">I</span>
+                  <span className="transform rotate-3">D</span>
+                  <span className="transform -rotate-12">E</span>
+                </div>
+                <div className="flex justify-center items-center gap-8">
+                  <span className="transform rotate-6">R</span>
+                  <span className="transform -rotate-3">I</span>
+                  <span className="transform rotate-12">T</span>
+                  <span className="transform -rotate-6">U</span>
+                  <span className="transform rotate-3">A</span>
+                  <span className="transform -rotate-12">L</span>
+                </div>
+              </div>
+            </motion.div>
+
             <motion.p 
               className="font-body text-lg md:text-xl text-white/90 mb-12 leading-relaxed tracking-wide"
               initial={{ opacity: 0, y: 20 }}
@@ -210,10 +218,6 @@ const Index = () => {
                           <Play className="text-black ml-1" size={24} fill="currentColor" />
                         </div>
                       </div>
-                      {/* Live session badge */}
-                      <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        LIVE SESSION
-                      </div>
                     </motion.div>
                     <div className="space-y-3">
                       <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300 tracking-wide">
@@ -243,97 +247,6 @@ const Index = () => {
                 VIEW ALL SESSIONS
               </motion.button>
             </Link>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Ritual Experiences Section */}
-      <motion.section 
-        className="min-h-screen bg-muted/10 py-32 px-6 flex items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
-        <div className="max-w-7xl mx-auto w-full">
-          <motion.div 
-            className="text-center mb-20"
-            variants={fadeInUpVariants}
-          >
-            <motion.h2 
-              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
-              whileHover={{ 
-                fontFamily: '"Crimson Text", serif',
-                transition: { duration: 0.3 }
-              }}
-            >
-              RITUAL EXPERIENCES
-            </motion.h2>
-            <motion.p 
-              className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
-              variants={fadeInUpVariants}
-            >
-              WE OFFER TRANSFORMATIVE EXPERIENCES THAT INTEGRATE MUSIC WITH MOVEMENT, MINDFULNESS, AND NATURE
-            </motion.p>
-          </motion.div>
-
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
-            variants={staggerContainer}
-          >
-            {ritualExperiences.map((experience, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUpVariants}
-                className="bg-muted/50 rounded-sm p-4 text-center hover:bg-muted/70 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-              >
-                <span className="font-body text-sm text-foreground tracking-wider">
-                  {experience}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div 
-            className="grid lg:grid-cols-2 gap-16 items-center"
-            variants={staggerContainer}
-          >
-            <motion.div
-              variants={fadeInUpVariants}
-              className="space-y-8"
-            >
-              <motion.p 
-                className="font-body text-lg text-muted-foreground leading-relaxed tracking-wide"
-                variants={fadeInUpVariants}
-              >
-                EACH RITUAL IS CAREFULLY DESIGNED TO CREATE SPACE FOR INTROSPECTION, MOVEMENT, AND CONNECTION WITH THE PRESENT MOMENT. COMBINING ANCIENT PRACTICES WITH MODERN WELLNESS APPROACHES.
-              </motion.p>
-              <motion.div variants={fadeInUpVariants}>
-                <Link to="/rituals">
-                  <motion.button 
-                    className="btn-animated-primary tracking-widest"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    EXPLORE RITUALS
-                  </motion.button>
-                </Link>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div
-              variants={fadeInUpVariants}
-              className="aspect-square overflow-hidden rounded-sm"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.4 }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop"
-                alt="Skate Bowl Experience"
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </motion.section>

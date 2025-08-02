@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
@@ -11,15 +12,6 @@ export default function VideoHero({ children, isLive = false, className = "" }: 
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    // Autoplay video when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Autoplay prevented:", error);
-      });
-    }
-  }, []);
-
   const toggleMute = () => {
     setIsMuted(!isMuted);
     if (videoRef.current) {
@@ -29,20 +21,12 @@ export default function VideoHero({ children, isLive = false, className = "" }: 
 
   return (
     <div className={`relative h-screen overflow-hidden ${className}`}>
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay
-        loop
-        muted={isMuted}
-        playsInline
-      >
-        <source src="/placeholder-video.mp4" type="video/mp4" />
-        <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/30" />
+      {/* Fallback background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/40 to-black"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
       
       {/* Content overlay */}
       <div className="absolute inset-0 flex items-center justify-center px-6">
