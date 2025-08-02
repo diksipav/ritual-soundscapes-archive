@@ -15,7 +15,7 @@ const Index = () => {
   const recentSessions = [
     {
       id: '1',
-      title: 'RÖVE - swedish house mafia (remix) wait so long (2) agents of time',
+      title: 'What Happens When You DJ Outside? PumpTrack DJ SET',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/rxAe3xqyeSA/maxresdefault.jpg',
       duration: '58:22',
@@ -23,7 +23,7 @@ const Index = () => {
     },
     {
       id: '2',
-      title: 'RÖVE - wait so long (remix) swedish house mafia',
+      title: 'AFRO Evening DJ SET at the Turia Park',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/b9Gi0JICt5Y/maxresdefault.jpg',
       duration: '1:12:14',
@@ -31,7 +31,7 @@ const Index = () => {
     },
     {
       id: '3',
-      title: 'RÖVE - agents of time', 
+      title: 'Sunrise Espresso DJ SET',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/0JjO27k8P44/maxresdefault.jpg',
       duration: '1:01:07',
@@ -39,7 +39,7 @@ const Index = () => {
     },
     {
       id: '4',
-      title: 'RÖVE - house session',
+      title: 'Park and coffee AFRO HOUSE DJ SET',
       artist: 'RÖVE',
       image: 'https://img.youtube.com/vi/cHT2laQvAYI/maxresdefault.jpg',
       duration: '1:03:05',
@@ -92,16 +92,17 @@ const Index = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="max-w-4xl mx-auto text-center"
           >
-            {/* Logo in upper center */}
+            {/* Logo in upper center - stacked vertically */}
             <motion.div 
-              className="mb-8"
+              className="mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              <h1 className="font-display text-4xl md:text-6xl text-white tracking-[0.3em] mb-8">
-                LOWTIDE RITUAL
-              </h1>
+              <div className="font-display text-white tracking-[0.3em] text-center">
+                <div className="text-4xl md:text-6xl mb-2">LOWTIDE</div>
+                <div className="text-4xl md:text-6xl">RITUAL</div>
+              </div>
             </motion.div>
 
             {/* Main Heading */}
@@ -134,7 +135,7 @@ const Index = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  JOIN LIVE SESSION
+                  JOIN
                 </motion.button>
               </Link>
               <Link to="/archive">
@@ -177,7 +178,7 @@ const Index = () => {
               className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
               variants={fadeInUpVariants}
             >
-              DISCOVER OUR LATEST LIVE SESSIONS PERFORMED BY RÖVE, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
+              DISCOVER OUR LATEST SESSIONS PERFORMED BY RÖVE, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
             </motion.p>
           </motion.div>
 
@@ -360,7 +361,7 @@ const Index = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
               >
-                EXPLORE RITUALS
+                EXPLORE BODY AND MIND
               </motion.button>
             </Link>
           </motion.div>

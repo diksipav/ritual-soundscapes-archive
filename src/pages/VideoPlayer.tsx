@@ -15,7 +15,7 @@ interface VideoSession {
 const videoSessions: VideoSession[] = [
   {
     id: '1',
-    title: 'RÖVE - swedish house mafia (remix) wait so long (2) agents of time',
+    title: 'What Happens When You DJ Outside? PumpTrack DJ SET',
     youtubeId: 'rxAe3xqyeSA',
     artist: 'RÖVE',
     description: 'An immersive journey through deep ambient textures and ethereal soundscapes.',
@@ -23,7 +23,7 @@ const videoSessions: VideoSession[] = [
   },
   {
     id: '2',
-    title: 'RÖVE - wait so long (remix) swedish house mafia',
+    title: 'AFRO Evening DJ SET at the Turia Park',
     youtubeId: 'b9Gi0JICt5Y',
     artist: 'RÖVE',
     description: 'Early morning sound healing session captured at sunrise.',
@@ -31,7 +31,7 @@ const videoSessions: VideoSession[] = [
   },
   {
     id: '3',
-    title: 'RÖVE - agents of time',
+    title: 'Sunrise Espresso DJ SET',
     youtubeId: '0JjO27k8P44',
     artist: 'RÖVE',
     description: 'Organic beats and nature sounds blend in perfect harmony.',
@@ -39,7 +39,7 @@ const videoSessions: VideoSession[] = [
   },
   {
     id: '4',
-    title: 'RÖVE - house session',
+    title: 'Park and coffee AFRO HOUSE DJ SET',
     youtubeId: 'cHT2laQvAYI',
     artist: 'RÖVE',
     description: 'Ocean-inspired ambient compositions for deep listening.',
@@ -80,7 +80,7 @@ export default function VideoPlayer() {
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Header with Return Button */}
+        {/* Header with Return Button and Logo */}
         <motion.header 
           className="p-6"
           initial={{ opacity: 0, y: -20 }}
@@ -95,6 +95,13 @@ export default function VideoPlayer() {
               <ArrowLeft size={16} />
               BACK TO ARCHIVE
             </button>
+            {/* Centered Logo */}
+            <div className="absolute left-1/2 transform -translate-x-1/2">
+              <div className="font-display text-white tracking-[0.3em] text-center">
+                <div className="text-xl">LOWTIDE</div>
+                <div className="text-xl">RITUAL</div>
+              </div>
+            </div>
             <div className="text-right">
               <div className="text-white/60 text-sm tracking-wider">{session.duration}</div>
             </div>
@@ -130,7 +137,7 @@ export default function VideoPlayer() {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div>
-                <h1 className="font-display text-3xl md:text-5xl text-white mb-4 tracking-wider">
+                <h1 className="font-display text-2xl md:text-4xl text-white mb-4 tracking-wider font-bold">
                   {session.title}
                 </h1>
                 <p className="font-body text-xl text-purple-200 tracking-widest mb-2">
@@ -150,7 +157,7 @@ export default function VideoPlayer() {
                   className="btn-animated-primary flex items-center gap-2 justify-center"
                 >
                   <Youtube size={20} />
-                  WATCH ON YOUTUBE
+                  EXPLORE MORE ON
                 </a>
                 <button 
                   onClick={() => navigate('/archive')}

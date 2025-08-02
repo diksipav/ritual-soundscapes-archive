@@ -11,12 +11,14 @@ interface VideoHeroProps {
 
 export default function VideoHero({ children, isLive = false, className = "", videoUrl }: VideoHeroProps) {
   const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
+    if (iframeRef.current && videoId) {
+      // Update the iframe src with new mute parameter
+      const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`;
+      iframeRef.current.src = newSrc;
     }
   };
 
@@ -35,7 +37,7 @@ export default function VideoHero({ children, isLive = false, className = "", vi
       {videoId ? (
         <div className="absolute inset-0">
           <iframe
-            ref={videoRef}
+            ref={iframeRef}
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`}
             title="Background Video"
             className="w-full h-full object-cover scale-150"

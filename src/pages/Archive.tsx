@@ -19,7 +19,7 @@ export default function Archive() {
   const sessions: ArchiveSession[] = [
     {
       id: '1',
-      title: 'RÖVE - swedish house mafia (remix) wait so long (2) agents of time',
+      title: 'What Happens When You DJ Outside? PumpTrack DJ SET',
       artist: 'RÖVE',
       date: 'March 12, 2024',
       duration: '58:22',
@@ -29,7 +29,7 @@ export default function Archive() {
     },
     {
       id: '2',
-      title: 'RÖVE - wait so long (remix) swedish house mafia',
+      title: 'AFRO Evening DJ SET at the Turia Park',
       artist: 'RÖVE',
       date: 'March 10, 2024',
       duration: '1:12:14',
@@ -39,7 +39,7 @@ export default function Archive() {
     },
     {
       id: '3',
-      title: 'RÖVE - agents of time',
+      title: 'Sunrise Espresso DJ SET',
       artist: 'RÖVE',
       date: 'March 8, 2024',
       duration: '1:01:07',
@@ -49,7 +49,7 @@ export default function Archive() {
     },
     {
       id: '4',
-      title: 'RÖVE - house session',
+      title: 'Park and coffee AFRO HOUSE DJ SET',
       artist: 'RÖVE',
       date: 'March 5, 2024',
       duration: '1:03:05',

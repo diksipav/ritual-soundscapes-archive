@@ -46,11 +46,10 @@ export default function Navigation({ className = '' }: NavigationProps) {
   };
 
   const navLinks = [
-    { href: '/live', label: language === 'EN' ? 'LIVE' : 'EN VIVO' },
     { href: '/archive', label: language === 'EN' ? 'ARCHIVE' : 'ARCHIVO' },
     { href: '/events', label: language === 'EN' ? 'EVENTS' : 'EVENTOS' },
-    { href: '/rituals', label: language === 'EN' ? 'RITUALS' : 'RITUALES' },
-    { href: '/shop', label: language === 'EN' ? 'SHOP' : 'TIENDA' },
+    { href: '/rituals', label: language === 'EN' ? 'BODY AND MIND' : 'CUERPO Y MENTE' },
+    { href: '/shop', label: language === 'EN' ? 'JOIN THE TRIBE' : 'ÚNETE A LA TRIBU' },
   ];
 
   const authLink = user 
@@ -104,12 +103,13 @@ export default function Navigation({ className = '' }: NavigationProps) {
                 style={{ scale: logoScale, y: logoY }}
               >
                 {/* Full Logo - visible at top */}
-                <motion.span
+                <motion.div
                   style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}
-                  className="absolute inset-0 whitespace-nowrap"
+                  className="absolute inset-0 whitespace-nowrap text-center"
                 >
-                  LOWTIDE RITUAL
-                </motion.span>
+                  <div>LOWTIDE</div>
+                  <div>RITUAL</div>
+                </motion.div>
                 
                 {/* Compact Logo - visible when scrolled */}
                 <motion.span
@@ -164,8 +164,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
             rel="noopener noreferrer"
             className="font-body text-xs text-center transition-colors duration-300 tracking-wider text-muted-foreground hover:text-foreground"
           >
-            <Youtube size={16} className="mx-auto mb-1" />
-            YT
+            <Youtube size={16} className="mx-auto" />
           </a>
         </div>
       </nav>
@@ -213,7 +212,6 @@ export default function Navigation({ className = '' }: NavigationProps) {
                       onClick={closeOverlay}
                     >
                       <Youtube size={32} />
-                      YOUTUBE
                     </a>
                   </motion.li>
                   <motion.li variants={itemVariants}>
