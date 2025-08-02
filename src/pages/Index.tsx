@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import VideoHero from '@/components/VideoHero';
 import { useEffect, useRef } from 'react';
+import { Play } from 'lucide-react';
 
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -14,47 +15,58 @@ const Index = () => {
   const recentSessions = [
     {
       id: '1',
-      title: 'RITUAL FREQUENCIES',
-      artist: 'LOWTIDE COLLECTIVE',
-      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
+      title: 'SET 1 - RITUAL FREQUENCIES',
+      artist: 'RÖVE',
+      image: 'https://img.youtube.com/vi/rxAe3xqyeSA/maxresdefault.jpg',
       duration: '45 MIN',
-      videoUrl: 'https://youtu.be/rxAe3xqyeSA'
+      youtubeId: 'rxAe3xqyeSA'
     },
     {
       id: '2',
-      title: 'COASTAL MEDITATION',
-      artist: 'OCEAN COLLECTIVE',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop',
-      duration: '42 MIN'
+      title: 'SET 2 - DAWN MEDITATION',
+      artist: 'RÖVE',
+      image: 'https://img.youtube.com/vi/b9Gi0JICt5Y/maxresdefault.jpg',
+      duration: '42 MIN',
+      youtubeId: 'b9Gi0JICt5Y'
     },
     {
       id: '3',
-      title: 'FOREST FREQUENCIES', 
-      artist: 'NATURE LAB',
-      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
-      duration: '58 MIN'
+      title: 'SET 3 - FOREST RHYTHMS', 
+      artist: 'RÖVE',
+      image: 'https://img.youtube.com/vi/0JjO27k8P44/maxresdefault.jpg',
+      duration: '58 MIN',
+      youtubeId: '0JjO27k8P44'
     },
     {
       id: '4',
-      title: 'URBAN TRANQUILITY',
-      artist: 'CITY ZEN',
-      image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&h=300&fit=crop',
-      duration: '36 MIN'
+      title: 'SET 4 - COASTAL FREQUENCIES',
+      artist: 'RÖVE',
+      image: 'https://img.youtube.com/vi/cHT2laQvAYI/maxresdefault.jpg',
+      duration: '38 MIN',
+      youtubeId: 'cHT2laQvAYI'
     }
+  ];
+
+  const ritualExperiences = [
+    'SOUND HEALING',
+    'ANIMAL FLOW',
+    'YOGA',
+    'CALISTHENICS',
+    'SURFING',
+    'ICE BATH',
+    'BREATHWORK',
+    'CONSCIOUS EATING',
+    'HUMAN / AI COLLABORATION',
+    'SKATE IN A BOWL',
+    'PUMPTRACK'
   ];
 
   const upcomingEvents = [
     {
       id: '1',
-      title: 'SUNSET SESSIONS VOL. 3',
-      date: 'MARCH 15',
-      location: 'MALIBU BEACH'
-    },
-    {
-      id: '2',
-      title: 'FOREST RITUAL',
-      date: 'APRIL 22',
-      location: 'MUIR WOODS'
+      title: 'SUNSET SESSION VOL. 2',
+      date: 'TODAY - AUGUST 2',
+      location: 'RUZAFA TERRACE'
     }
   ];
 
@@ -63,7 +75,7 @@ const Index = () => {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
@@ -154,7 +166,6 @@ const Index = () => {
           >
             <motion.h2 
               className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
-              onHoverStart={() => {}}
               whileHover={{ 
                 fontFamily: '"Crimson Text", serif',
                 transition: { duration: 0.3 }
@@ -166,7 +177,7 @@ const Index = () => {
               className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
               variants={fadeInUpVariants}
             >
-              DISCOVER OUR LATEST AUDIO JOURNEYS, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
+              DISCOVER OUR LATEST LIVE SESSIONS PERFORMED BY RÖVE, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
             </motion.p>
           </motion.div>
 
@@ -181,10 +192,10 @@ const Index = () => {
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
-                <Link to="/archive" className="group block">
-                  <div className="card-elegant overflow-hidden">
+                <Link to={`/video/${session.id}`} className="group block">
+                  <div className="card-elegant overflow-hidden relative">
                     <motion.div 
-                      className="aspect-video overflow-hidden rounded-sm mb-6"
+                      className="aspect-video overflow-hidden rounded-sm mb-6 relative"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.4 }}
                     >
@@ -193,6 +204,16 @@ const Index = () => {
                         alt={session.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
+                      {/* Play button overlay */}
+                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                          <Play className="text-black ml-1" size={24} fill="currentColor" />
+                        </div>
+                      </div>
+                      {/* Live session badge */}
+                      <div className="absolute top-3 left-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                        LIVE SESSION
+                      </div>
                     </motion.div>
                     <div className="space-y-3">
                       <h3 className="font-display text-xl text-foreground group-hover:text-accent transition-colors duration-300 tracking-wide">
@@ -226,7 +247,7 @@ const Index = () => {
         </div>
       </motion.section>
 
-      {/* Experiences Section */}
+      {/* Ritual Experiences Section */}
       <motion.section 
         className="min-h-screen bg-muted/10 py-32 px-6 flex items-center"
         initial="hidden"
@@ -235,25 +256,58 @@ const Index = () => {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            className="text-center mb-20"
+            variants={fadeInUpVariants}
+          >
+            <motion.h2 
+              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
+              whileHover={{ 
+                fontFamily: '"Crimson Text", serif',
+                transition: { duration: 0.3 }
+              }}
+            >
+              RITUAL EXPERIENCES
+            </motion.h2>
+            <motion.p 
+              className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
+              variants={fadeInUpVariants}
+            >
+              WE OFFER TRANSFORMATIVE EXPERIENCES THAT INTEGRATE MUSIC WITH MOVEMENT, MINDFULNESS, AND NATURE
+            </motion.p>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-12"
+            variants={staggerContainer}
+          >
+            {ritualExperiences.map((experience, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUpVariants}
+                className="bg-muted/50 rounded-sm p-4 text-center hover:bg-muted/70 transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
+              >
+                <span className="font-body text-sm text-foreground tracking-wider">
+                  {experience}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div 
+            className="grid lg:grid-cols-2 gap-16 items-center"
+            variants={staggerContainer}
+          >
             <motion.div
               variants={fadeInUpVariants}
               className="space-y-8"
             >
-              <motion.h2 
-                className="font-display text-5xl md:text-7xl text-foreground tracking-wider"
-                whileHover={{ 
-                  fontFamily: '"Crimson Text", serif',
-                  transition: { duration: 0.3 }
-                }}
-              >
-                EXPERIENCES
-              </motion.h2>
               <motion.p 
                 className="font-body text-lg text-muted-foreground leading-relaxed tracking-wide"
                 variants={fadeInUpVariants}
               >
-                IMMERSE YOURSELF IN CAREFULLY CURATED SONIC LANDSCAPES THAT BLUR THE LINES BETWEEN MEDITATION, MUSIC, AND RITUAL. EACH SESSION IS DESIGNED TO CREATE SPACE FOR INTROSPECTION AND CONNECTION WITH THE PRESENT MOMENT.
+                EACH RITUAL IS CAREFULLY DESIGNED TO CREATE SPACE FOR INTROSPECTION, MOVEMENT, AND CONNECTION WITH THE PRESENT MOMENT. COMBINING ANCIENT PRACTICES WITH MODERN WELLNESS APPROACHES.
               </motion.p>
               <motion.div variants={fadeInUpVariants}>
                 <Link to="/rituals">
@@ -275,12 +329,12 @@ const Index = () => {
               transition={{ duration: 0.4 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=600&fit=crop"
-                alt="Surfing Experience"
+                src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop"
+                alt="Skate Bowl Experience"
                 className="w-full h-full object-cover"
               />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -337,6 +391,9 @@ const Index = () => {
                       className="btn-animated-primary tracking-widest"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={(e) => {
+                        e.target.textContent = 'IT IS FREE :)';
+                      }}
                     >
                       GET TICKETS
                     </motion.button>

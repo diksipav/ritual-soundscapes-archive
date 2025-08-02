@@ -1,84 +1,69 @@
-
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 interface VideoHeroProps {
-  videoSrc?: string;
+  children: React.ReactNode;
   isLive?: boolean;
-  children?: React.ReactNode;
+  className?: string;
 }
 
-export default function VideoHero({ 
-  videoSrc = "https://www.youtube.com/embed/rxAe3xqyeSA?autoplay=1&mute=1&controls=0&loop=1&playlist=rxAe3xqyeSA&disablekb=1&modestbranding=1&rel=0&showinfo=0",
-  isLive = false,
-  children 
-}: VideoHeroProps) {
+export default function VideoHero({ children, isLive = false, className = "" }: VideoHeroProps) {
   const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef<HTMLIFrameElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Autoplay video when component mounts
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("Autoplay prevented:", error);
+      });
+    }
+  }, []);
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
     if (videoRef.current) {
-      const iframe = videoRef.current;
-      const currentSrc = iframe.src;
-      if (isMuted) {
-        iframe.src = currentSrc.replace('mute=1', 'mute=0');
-      } else {
-        iframe.src = currentSrc.replace('mute=0', 'mute=1');
-      }
+      videoRef.current.muted = !isMuted;
     }
   };
 
   return (
-    <section className="video-hero relative h-screen overflow-hidden">
-      <iframe
+    <div className={`relative h-screen overflow-hidden ${className}`}>
+      <video
         ref={videoRef}
-        src={videoSrc}
-        className="absolute inset-0 w-full h-[120%] object-cover pointer-events-none"
-        frameBorder="0"
-        allow="autoplay; encrypted-media"
-        allowFullScreen
-        style={{ transform: 'scale(1.2) translateY(-10%)' }}
-      />
+        className="absolute inset-0 w-full h-full object-cover"
+        autoPlay
+        loop
+        muted={isMuted}
+        playsInline
+      >
+        <source src="/placeholder-video.mp4" type="video/mp4" />
+        <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
+      </video>
       
-      {/* Dark overlay for text readability */}
+      {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/30" />
       
-      {/* Mute button - positioned lower to avoid header overlap */}
-      <motion.button
-        onClick={toggleMute}
-        className="fixed bottom-8 right-8 z-30 p-3 rounded-full bg-black/20 text-white hover:bg-black/40 transition-colors pointer-events-auto backdrop-blur-sm"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
-      >
-        {isMuted ? <VolumeX size={24} /> : <Volume2 size={24} />}
-      </motion.button>
-      
       {/* Content overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-6">
-        {isLive && (
-          <motion.div
-            className="live-indicator-flashing mb-12 cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <span className="tracking-widest">LIVE NOW</span>
-          </motion.div>
-        )}
-        
-        {children && (
-          <div className="max-w-4xl">
-            {children}
-          </div>
-        )}
+      <div className="absolute inset-0 flex items-center justify-center px-6">
+        {children}
       </div>
-    </section>
+      
+      {/* Live indicator */}
+      {isLive && (
+        <div className="absolute top-8 right-8 flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+          <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+          LIVE
+        </div>
+      )}
+      
+      {/* Mute/Unmute button - positioned at bottom right */}
+      <button
+        onClick={toggleMute}
+        className="absolute bottom-8 right-8 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-10"
+      >
+        {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+      </button>
+    </div>
   );
 }

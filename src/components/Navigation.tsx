@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Menu } from 'lucide-react';
+import { X, Menu, Youtube } from 'lucide-react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
 import { User } from '@supabase/supabase-js';
@@ -65,7 +65,6 @@ export default function Navigation({ className = '' }: NavigationProps) {
       opacity: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
         staggerChildren: 0.1,
         staggerDirection: -1
       }
@@ -74,7 +73,6 @@ export default function Navigation({ className = '' }: NavigationProps) {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
         staggerChildren: 0.1,
         delayChildren: 0.2
       }
@@ -86,7 +84,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
     visible: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      transition: { duration: 0.5 }
     }
   };
 
@@ -124,21 +122,34 @@ export default function Navigation({ className = '' }: NavigationProps) {
               </motion.span>
             </motion.div>
           </Link>
-          
-          <motion.button
-            onClick={toggleOverlay}
-            className="hidden md:flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div
-              animate={{ rotate: isOverlayOpen ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
+
+          {/* YouTube Channel Button */}
+          <div className="hidden md:flex items-center gap-4">
+            <a
+              href="https://www.youtube.com/@LOWTIDERITUALMusic/videos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
             >
-              {isOverlayOpen ? <X size={16} /> : <Menu size={16} />}
-            </motion.div>
-            <span>{language === 'EN' ? 'MENU' : 'MENÚ'}</span>
-          </motion.button>
+              <Youtube size={16} />
+              <span>YOUTUBE</span>
+            </a>
+            
+            <motion.button
+              onClick={toggleOverlay}
+              className="flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <motion.div
+                animate={{ rotate: isOverlayOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isOverlayOpen ? <X size={16} /> : <Menu size={16} />}
+              </motion.div>
+              <span>{language === 'EN' ? 'MENU' : 'MENÚ'}</span>
+            </motion.button>
+          </div>
         </div>
       </motion.header>
 
@@ -158,6 +169,15 @@ export default function Navigation({ className = '' }: NavigationProps) {
               {link.label}
             </Link>
           ))}
+          <a
+            href="https://www.youtube.com/@LOWTIDERITUALMusic/videos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-xs text-center transition-colors duration-300 tracking-wider text-muted-foreground hover:text-foreground"
+          >
+            <Youtube size={16} className="mx-auto mb-1" />
+            YT
+          </a>
         </div>
       </nav>
 

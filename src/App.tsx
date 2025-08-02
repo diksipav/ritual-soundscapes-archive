@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +13,7 @@ import Shop from "./pages/Shop";
 import Events from "./pages/Events";
 import Live from "./pages/Live";
 import Archive from "./pages/Archive";
+import VideoPlayer from "./pages/VideoPlayer";
 import Rituals from "./pages/Rituals";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +35,7 @@ const App = () => (
           <Route path="/events" element={<Events />} />
           <Route path="/live" element={<Live />} />
           <Route path="/archive" element={<Archive />} />
+          <Route path="/video/:id" element={<VideoPlayer />} />
           <Route path="/rituals" element={<Rituals />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
