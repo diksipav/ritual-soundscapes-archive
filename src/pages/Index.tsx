@@ -1,72 +1,68 @@
-
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import VideoHero from '@/components/VideoHero';
 import { useEffect, useRef } from 'react';
 import { Play } from 'lucide-react';
-
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
+  const {
+    scrollYProgress
+  } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
-
-  const recentSessions = [
-    {
-      id: '1',
-      title: 'What Happens When You DJ Outside? PumpTrack DJ SET',
-      artist: 'RÖVE',
-      image: 'https://img.youtube.com/vi/rxAe3xqyeSA/maxresdefault.jpg',
-      duration: '58:22',
-      youtubeId: 'rxAe3xqyeSA'
-    },
-    {
-      id: '2',
-      title: 'AFRO Evening DJ SET at the Turia Park',
-      artist: 'RÖVE',
-      image: 'https://img.youtube.com/vi/b9Gi0JICt5Y/maxresdefault.jpg',
-      duration: '1:12:14',
-      youtubeId: 'b9Gi0JICt5Y'
-    },
-    {
-      id: '3',
-      title: 'Sunrise Espresso DJ SET',
-      artist: 'RÖVE',
-      image: 'https://img.youtube.com/vi/0JjO27k8P44/maxresdefault.jpg',
-      duration: '1:01:07',
-      youtubeId: '0JjO27k8P44'
-    },
-    {
-      id: '4',
-      title: 'Park and coffee AFRO HOUSE DJ SET',
-      artist: 'RÖVE',
-      image: 'https://img.youtube.com/vi/cHT2laQvAYI/maxresdefault.jpg',
-      duration: '1:03:05',
-      youtubeId: 'cHT2laQvAYI'
-    }
-  ];
-
-  const upcomingEvents = [
-    {
-      id: '1',
-      title: 'SUNSET SESSION VOL. 2',
-      date: 'TODAY - AUGUST 2',
-      location: 'RUZAFA TERRACE'
-    }
-  ];
-
+  const recentSessions = [{
+    id: '1',
+    title: 'What Happens When You DJ Outside? PumpTrack DJ SET',
+    artist: 'RÖVE',
+    image: 'https://img.youtube.com/vi/rxAe3xqyeSA/maxresdefault.jpg',
+    duration: '58:22',
+    youtubeId: 'rxAe3xqyeSA'
+  }, {
+    id: '2',
+    title: 'AFRO Evening DJ SET at the Turia Park',
+    artist: 'RÖVE',
+    image: 'https://img.youtube.com/vi/b9Gi0JICt5Y/maxresdefault.jpg',
+    duration: '1:12:14',
+    youtubeId: 'b9Gi0JICt5Y'
+  }, {
+    id: '3',
+    title: 'Sunrise Espresso DJ SET',
+    artist: 'RÖVE',
+    image: 'https://img.youtube.com/vi/0JjO27k8P44/maxresdefault.jpg',
+    duration: '1:01:07',
+    youtubeId: '0JjO27k8P44'
+  }, {
+    id: '4',
+    title: 'Park and coffee AFRO HOUSE DJ SET',
+    artist: 'RÖVE',
+    image: 'https://img.youtube.com/vi/cHT2laQvAYI/maxresdefault.jpg',
+    duration: '1:03:05',
+    youtubeId: 'cHT2laQvAYI'
+  }];
+  const upcomingEvents = [{
+    id: '1',
+    title: 'SUNSET SESSION VOL. 2',
+    date: 'TODAY - AUGUST 2',
+    location: 'RUZAFA TERRACE'
+  }];
   const fadeInUpVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    hidden: {
+      opacity: 0,
+      y: 60
+    },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.8 }
+      transition: {
+        duration: 0.8
+      }
     }
   };
-
   const staggerContainer = {
-    hidden: { opacity: 0 },
+    hidden: {
+      opacity: 0
+    },
     visible: {
       opacity: 1,
       transition: {
@@ -75,75 +71,96 @@ const Index = () => {
       }
     }
   };
-
-  return (
-    <div ref={containerRef} className="min-h-screen bg-background">
+  return <div ref={containerRef} className="min-h-screen bg-background">
       {/* Hero Video Section */}
-      <motion.section 
-        className="h-screen relative"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+      <motion.section className="h-screen relative" initial={{
+      opacity: 0
+    }} animate={{
+      opacity: 1
+    }} transition={{
+      duration: 1
+    }}>
         <VideoHero isLive={false} videoUrl="https://www.youtube.com/watch?v=rxAe3xqyeSA">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="max-w-4xl mx-auto text-center"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 40
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 1,
+          delay: 0.5
+        }} className="max-w-4xl mx-auto text-center">
             {/* Logo in upper center - stacked vertically */}
-            <motion.div 
-              className="mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
+            <motion.div className="mb-16" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.7
+          }}>
               <div className="font-display text-white tracking-[0.3em] text-center">
-                <div className="text-4xl md:text-6xl mb-2">LOWTIDE</div>
-                <div className="text-4xl md:text-6xl">RITUAL</div>
+                
+                
               </div>
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h2 
-              className="font-display text-5xl md:text-7xl text-white mb-8 tracking-wider"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-            >
+            <motion.h2 className="font-display text-5xl md:text-7xl text-white mb-8 tracking-wider" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.9
+          }}>
               WHERE MUSIC BECOMES A RITUAL
             </motion.h2>
 
-            <motion.p 
-              className="font-body text-lg md:text-xl text-white/90 mb-12 leading-relaxed tracking-wide"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
-            >
+            <motion.p className="font-body text-lg md:text-xl text-white/90 mb-12 leading-relaxed tracking-wide" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.1
+          }}>
               IMMERSIVE AUDIO EXPERIENCES CRAFTED FOR MINDFUL LISTENING AND DEEP CONNECTION
             </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.3 }}
-            >
+            <motion.div className="flex flex-col sm:flex-row gap-6 justify-center" initial={{
+            opacity: 0,
+            y: 20
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 1.3
+          }}>
               <Link to="/live">
-                <motion.button 
-                  className="btn-animated-primary tracking-widest"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                <motion.button className="btn-animated-primary tracking-widest" whileHover={{
+                scale: 1.05,
+                y: -2
+              }} whileTap={{
+                scale: 0.98
+              }}>
                   JOIN
                 </motion.button>
               </Link>
               <Link to="/archive">
-                <motion.button 
-                  className="btn-animated-ghost tracking-widest text-white border-white hover:bg-white hover:text-foreground"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.98 }}
-                >
+                <motion.button className="btn-animated-ghost tracking-widest text-white border-white hover:bg-white hover:text-foreground" whileHover={{
+                scale: 1.05,
+                y: -2
+              }} whileTap={{
+                scale: 0.98
+              }}>
                   EXPLORE ARCHIVE
                 </motion.button>
               </Link>
@@ -153,58 +170,39 @@ const Index = () => {
       </motion.section>
 
       {/* Recent Sessions Section */}
-      <motion.section 
-        className="min-h-screen py-32 px-6 flex items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
+      <motion.section className="min-h-screen py-32 px-6 flex items-center" initial="hidden" whileInView="visible" viewport={{
+      once: true,
+      amount: 0.3
+    }} variants={staggerContainer}>
         <div className="max-w-7xl mx-auto w-full">
-          <motion.div 
-            className="text-center mb-20"
-            variants={fadeInUpVariants}
-          >
-            <motion.h2 
-              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
-              whileHover={{ 
-                fontFamily: '"Crimson Text", serif',
-                transition: { duration: 0.3 }
-              }}
-            >
+          <motion.div className="text-center mb-20" variants={fadeInUpVariants}>
+            <motion.h2 className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider" whileHover={{
+            fontFamily: '"Crimson Text", serif',
+            transition: {
+              duration: 0.3
+            }
+          }}>
               RECENT SESSIONS
             </motion.h2>
-            <motion.p 
-              className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide"
-              variants={fadeInUpVariants}
-            >
+            <motion.p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed tracking-wide" variants={fadeInUpVariants}>
               DISCOVER OUR LATEST SESSIONS PERFORMED BY RÖVE, EACH CRAFTED TO TRANSPORT YOU TO A DIFFERENT STATE OF CONSCIOUSNESS
             </motion.p>
           </motion.div>
 
-          <motion.div 
-            className="grid-elegant"
-            variants={staggerContainer}
-          >
-            {recentSessions.map((session, index) => (
-              <motion.div
-                key={session.id}
-                variants={fadeInUpVariants}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.3 }}
-              >
+          <motion.div className="grid-elegant" variants={staggerContainer}>
+            {recentSessions.map((session, index) => <motion.div key={session.id} variants={fadeInUpVariants} whileHover={{
+            y: -8
+          }} transition={{
+            duration: 0.3
+          }}>
                 <Link to={`/video/${session.id}`} className="group block">
                   <div className="card-elegant overflow-hidden relative">
-                    <motion.div 
-                      className="aspect-video overflow-hidden rounded-sm mb-6 relative"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <img
-                        src={session.image}
-                        alt={session.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
+                    <motion.div className="aspect-video overflow-hidden rounded-sm mb-6 relative" whileHover={{
+                  scale: 1.02
+                }} transition={{
+                  duration: 0.4
+                }}>
+                      <img src={session.image} alt={session.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                       {/* Play button overlay */}
                       <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
                         <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
@@ -223,20 +221,17 @@ const Index = () => {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </motion.div>
 
-          <motion.div 
-            className="text-center mt-16"
-            variants={fadeInUpVariants}
-          >
+          <motion.div className="text-center mt-16" variants={fadeInUpVariants}>
             <Link to="/archive">
-              <motion.button 
-                className="btn-animated-secondary tracking-widest"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.button className="btn-animated-secondary tracking-widest" whileHover={{
+              scale: 1.05,
+              y: -2
+            }} whileTap={{
+              scale: 0.98
+            }}>
                 VIEW ALL SESSIONS
               </motion.button>
             </Link>
@@ -245,47 +240,32 @@ const Index = () => {
       </motion.section>
 
       {/* Upcoming Events Section */}
-      <motion.section 
-        className="min-h-screen py-32 px-6 flex items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
+      <motion.section className="min-h-screen py-32 px-6 flex items-center" initial="hidden" whileInView="visible" viewport={{
+      once: true,
+      amount: 0.3
+    }} variants={staggerContainer}>
         <div className="max-w-5xl mx-auto w-full">
-          <motion.div 
-            className="text-center mb-20"
-            variants={fadeInUpVariants}
-          >
-            <motion.h2 
-              className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider"
-              whileHover={{ 
-                fontFamily: '"Crimson Text", serif',
-                transition: { duration: 0.3 }
-              }}
-            >
+          <motion.div className="text-center mb-20" variants={fadeInUpVariants}>
+            <motion.h2 className="font-display text-5xl md:text-7xl text-foreground mb-8 tracking-wider" whileHover={{
+            fontFamily: '"Crimson Text", serif',
+            transition: {
+              duration: 0.3
+            }
+          }}>
               UPCOMING EVENTS
             </motion.h2>
-            <motion.p 
-              className="font-body text-lg text-muted-foreground tracking-wide"
-              variants={fadeInUpVariants}
-            >
+            <motion.p className="font-body text-lg text-muted-foreground tracking-wide" variants={fadeInUpVariants}>
               JOIN US FOR INTIMATE GATHERINGS WHERE MUSIC AND NATURE CONVERGE
             </motion.p>
           </motion.div>
 
-          <motion.div 
-            className="space-y-8"
-            variants={staggerContainer}
-          >
-            {upcomingEvents.map((event) => (
-              <motion.div 
-                key={event.id} 
-                className="card-elegant"
-                variants={fadeInUpVariants}
-                whileHover={{ y: -4, scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-              >
+          <motion.div className="space-y-8" variants={staggerContainer}>
+            {upcomingEvents.map(event => <motion.div key={event.id} className="card-elegant" variants={fadeInUpVariants} whileHover={{
+            y: -4,
+            scale: 1.01
+          }} transition={{
+            duration: 0.3
+          }}>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                   <div>
                     <h3 className="font-display text-2xl text-foreground mb-2 tracking-wide">{event.title}</h3>
@@ -293,33 +273,29 @@ const Index = () => {
                   </div>
                   <div className="flex items-center gap-6">
                     <span className="font-body-medium text-xl text-accent tracking-wider">{event.date}</span>
-                    <motion.button 
-                      className="btn-animated-primary tracking-widest"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={(e) => {
-                        const target = e.target as HTMLButtonElement;
-                        target.textContent = 'IT IS FREE :)';
-                      }}
-                    >
+                    <motion.button className="btn-animated-primary tracking-widest" whileHover={{
+                  scale: 1.05
+                }} whileTap={{
+                  scale: 0.98
+                }} onClick={e => {
+                  const target = e.target as HTMLButtonElement;
+                  target.textContent = 'IT IS FREE :)';
+                }}>
                       GET TICKETS
                     </motion.button>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </motion.div>)}
           </motion.div>
 
-          <motion.div 
-            className="text-center mt-16"
-            variants={fadeInUpVariants}
-          >
+          <motion.div className="text-center mt-16" variants={fadeInUpVariants}>
             <Link to="/events">
-              <motion.button 
-                className="btn-animated-secondary tracking-widest"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.button className="btn-animated-secondary tracking-widest" whileHover={{
+              scale: 1.05,
+              y: -2
+            }} whileTap={{
+              scale: 0.98
+            }}>
                 VIEW ALL EVENTS
               </motion.button>
             </Link>
@@ -328,47 +304,38 @@ const Index = () => {
       </motion.section>
 
       {/* Philosophy Section */}
-      <motion.section 
-        className="min-h-screen bg-muted/10 py-32 px-6 flex items-center"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={staggerContainer}
-      >
+      <motion.section className="min-h-screen bg-muted/10 py-32 px-6 flex items-center" initial="hidden" whileInView="visible" viewport={{
+      once: true,
+      amount: 0.3
+    }} variants={staggerContainer}>
         <div className="max-w-5xl mx-auto text-center w-full">
-          <motion.h2 
-            className="font-display text-5xl md:text-7xl text-foreground mb-12 tracking-wider"
-            variants={fadeInUpVariants}
-            whileHover={{ 
-              fontFamily: '"Crimson Text", serif',
-              transition: { duration: 0.3 }
-            }}
-          >
+          <motion.h2 className="font-display text-5xl md:text-7xl text-foreground mb-12 tracking-wider" variants={fadeInUpVariants} whileHover={{
+          fontFamily: '"Crimson Text", serif',
+          transition: {
+            duration: 0.3
+          }
+        }}>
             OUR PHILOSOPHY
           </motion.h2>
-          <motion.p 
-            className="font-body text-xl text-muted-foreground leading-relaxed mb-12 tracking-wide"
-            variants={fadeInUpVariants}
-          >
+          <motion.p className="font-body text-xl text-muted-foreground leading-relaxed mb-12 tracking-wide" variants={fadeInUpVariants}>
             AT LOWTIDE RITUAL, WE BELIEVE IN THE TRANSFORMATIVE POWER OF MINDFUL LISTENING. 
             EACH SESSION IS CAREFULLY CURATED TO CREATE SPACE FOR INTROSPECTION, CONNECTION, 
             AND THE REDISCOVERY OF WONDER IN THE EVERYDAY.
           </motion.p>
           <motion.div variants={fadeInUpVariants}>
             <Link to="/rituals">
-              <motion.button 
-                className="btn-animated-primary tracking-widest"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <motion.button className="btn-animated-primary tracking-widest" whileHover={{
+              scale: 1.05,
+              y: -2
+            }} whileTap={{
+              scale: 0.98
+            }}>
                 EXPLORE BODY AND MIND
               </motion.button>
             </Link>
           </motion.div>
         </div>
       </motion.section>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
