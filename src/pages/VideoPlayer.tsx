@@ -55,9 +55,9 @@ export default function VideoPlayer() {
 
   if (!session) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="font-display text-3xl text-foreground mb-4">SESSION NOT FOUND</h1>
+          <h1 className="font-display text-2xl sm:text-3xl text-foreground mb-4">SESSION NOT FOUND</h1>
           <button 
             onClick={() => navigate('/archive')}
             className="btn-animated-secondary"
@@ -82,7 +82,7 @@ export default function VideoPlayer() {
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header with Return Button and Logo */}
         <motion.header 
-          className="p-6"
+          className="p-4 sm:p-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -93,23 +93,26 @@ export default function VideoPlayer() {
               className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 font-body text-sm tracking-wider"
             >
               <ArrowLeft size={16} />
-              BACK TO ARCHIVE
+              <span className="hidden sm:inline">BACK TO ARCHIVE</span>
+              <span className="sm:hidden">BACK</span>
             </button>
+            
             {/* Centered Logo */}
-            <div className="absolute left-1/2 transform -translate-x-1/2">
-              <div className="font-display text-white tracking-[0.3em] text-center">
-                <div className="text-xl">LOWTIDE</div>
-                <div className="text-xl">RITUAL</div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 text-center">
+              <div className="font-display text-white tracking-[0.3em]">
+                <div className="text-lg sm:text-xl">LOWTIDE</div>
+                <div className="text-lg sm:text-xl">RITUAL</div>
               </div>
             </div>
+            
             <div className="text-right">
-              <div className="text-white/60 text-sm tracking-wider">{session.duration}</div>
+              <div className="text-white/60 text-xs sm:text-sm tracking-wider">{session.duration}</div>
             </div>
           </div>
         </motion.header>
 
         {/* Video Section */}
-        <div className="flex-1 flex items-center justify-center px-6 pb-20">
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 pb-16 sm:pb-20">
           <motion.div 
             className="max-w-6xl w-full"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -117,7 +120,7 @@ export default function VideoPlayer() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Video Player */}
-            <div className="aspect-video mb-8 rounded-lg overflow-hidden shadow-2xl">
+            <div className="aspect-video mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-2xl">
               <iframe
                 width="100%"
                 height="100%"
@@ -131,37 +134,37 @@ export default function VideoPlayer() {
 
             {/* Session Info */}
             <motion.div 
-              className="text-center space-y-6"
+              className="text-center space-y-4 sm:space-y-6 px-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div>
-                <h1 className="font-display text-2xl md:text-4xl text-white mb-4 tracking-wider font-bold">
+                <h1 className="font-display text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4 tracking-wider font-bold leading-tight">
                   {session.title}
                 </h1>
-                <p className="font-body text-xl text-purple-200 tracking-widest mb-2">
+                <p className="font-body text-lg sm:text-xl text-purple-200 tracking-widest mb-2">
                   PERFORMED BY {session.artist}
                 </p>
-                <p className="font-body text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+                <p className="font-body text-sm sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed px-2">
                   {session.description}
                 </p>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2">
                 <a
                   href={`https://www.youtube.com/watch?v=${session.youtubeId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-animated-primary flex items-center gap-2 justify-center"
+                  className="btn-animated-primary flex items-center gap-2 justify-center text-sm sm:text-base"
                 >
-                  <Youtube size={20} />
+                  <Youtube size={18} />
                   EXPLORE MORE ON
                 </a>
                 <button 
                   onClick={() => navigate('/archive')}
-                  className="btn-animated-ghost text-white border-white hover:bg-white hover:text-slate-900"
+                  className="btn-animated-ghost text-white border-white hover:bg-white hover:text-slate-900 text-sm sm:text-base"
                 >
                   EXPLORE MORE SESSIONS
                 </button>

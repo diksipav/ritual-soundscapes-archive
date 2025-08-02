@@ -16,13 +16,11 @@ export default function VideoHero({ children, isLive = false, className = "", vi
   const toggleMute = () => {
     setIsMuted(!isMuted);
     if (iframeRef.current && videoId) {
-      // Update the iframe src with new mute parameter
       const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`;
       iframeRef.current.src = newSrc;
     }
   };
 
-  // Extract YouTube video ID from URL
   const getYouTubeVideoId = (url: string) => {
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = url.match(regExp);
@@ -40,15 +38,22 @@ export default function VideoHero({ children, isLive = false, className = "", vi
             ref={iframeRef}
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`}
             title="Background Video"
-            className="w-full h-full object-cover scale-150"
+            className="w-full h-full object-cover"
             style={{ 
-              transform: 'scale(1.5)',
+              width: '100vw',
+              height: '56.25vw', // 16:9 aspect ratio
+              minHeight: '100vh',
+              minWidth: '177.77vh', // 16:9 aspect ratio
+              transform: 'translate(-50%, -50%)',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
               pointerEvents: 'none'
             }}
             allow="autoplay; encrypted-media"
           />
           {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/40 sm:bg-black/30"></div>
         </div>
       ) : (
         /* Fallback background */
@@ -60,7 +65,7 @@ export default function VideoHero({ children, isLive = false, className = "", vi
       )}
       
       {/* Content overlay */}
-      <div className="absolute inset-0 flex items-center justify-center px-6 z-10">
+      <div className="absolute inset-0 flex items-center justify-center px-4 sm:px-6 z-10">
         {children}
       </div>
       
@@ -68,9 +73,9 @@ export default function VideoHero({ children, isLive = false, className = "", vi
       {videoUrl && (
         <button
           onClick={toggleMute}
-          className="absolute bottom-8 right-8 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
+          className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
         >
-          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>
       )}
     </div>
