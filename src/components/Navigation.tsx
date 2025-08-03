@@ -96,36 +96,38 @@ export default function Navigation({ className = '' }: NavigationProps) {
           borderBottom: headerOpacity.get() > 0.1 ? '1px solid hsla(var(--border), 0.1)' : 'none'
         }}
       >
-        <div className="flex items-center justify-between">
-          {/* Dynamic Logo - Always Centered */}
-          <div className="absolute left-1/2 transform -translate-x-1/2">
+        <div className="relative flex items-center justify-center w-full">
+          {/* Centered Logo Container */}
+          <div className="flex-1 flex justify-center">
             <Link to="/" onClick={closeOverlay}>
               <motion.div 
-                className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300 text-center"
+                className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300"
                 style={{ scale: logoScale, y: logoY }}
               >
                 {/* Full Logo - visible at top */}
                 <motion.div
                   style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}
-                  className="absolute inset-0 whitespace-nowrap text-center"
+                  className="text-center"
                 >
-                  <div className="text-center">LOWTIDE</div>
-                  <div className="text-center">RITUAL</div>
+                  <div className="text-center leading-tight">LOWTIDE</div>
+                  <div className="text-center leading-tight">RITUAL</div>
                 </motion.div>
                 
                 {/* Compact Logo - visible when scrolled */}
-                <motion.span
+                <motion.div
                   style={{ opacity: showCompactLogo }}
-                  className="text-xl font-bold tracking-widest"
+                  className="absolute inset-0 flex items-center justify-center"
                 >
-                  LTR
-                </motion.span>
+                  <span className="text-xl font-bold tracking-widest text-center">
+                    LTR
+                  </span>
+                </motion.div>
               </motion.div>
             </Link>
           </div>
 
-          {/* Menu Button - Desktop */}
-          <div className="hidden md:flex items-center gap-4 ml-auto">
+          {/* Menu Button - Desktop (positioned absolute to not affect centering) */}
+          <div className="hidden md:flex items-center gap-4 absolute right-0">
             <motion.button
               onClick={toggleOverlay}
               className="flex items-center gap-2 font-body text-sm text-foreground hover:text-accent transition-colors duration-300 tracking-wider"
