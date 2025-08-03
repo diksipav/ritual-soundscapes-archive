@@ -99,7 +99,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link to="/" onClick={closeOverlay}>
               <motion.div 
-                className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300"
+                className="font-display text-xl tracking-widest text-foreground hover:text-accent transition-colors duration-300 text-center"
                 style={{ scale: logoScale, y: logoY }}
               >
                 {/* Full Logo - visible at top */}
@@ -107,8 +107,8 @@ export default function Navigation({ className = '' }: NavigationProps) {
                   style={{ opacity: useTransform(scrollY, [0, 200], [1, 0]) }}
                   className="absolute inset-0 whitespace-nowrap text-center"
                 >
-                  <div>LOWTIDE</div>
-                  <div>RITUAL</div>
+                  <div className="text-center">LOWTIDE</div>
+                  <div className="text-center">RITUAL</div>
                 </motion.div>
                 
                 {/* Compact Logo - visible when scrolled */}
