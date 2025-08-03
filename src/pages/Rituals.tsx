@@ -117,22 +117,23 @@ export default function Rituals() {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.4 }}
                   >
-                    {hoveredRitual === ritual.id ? (
+                    {/* Always play video with zoom to hide YouTube controls */}
+                    <div className="w-full h-full relative overflow-hidden">
                       <iframe
                         width="100%"
                         height="100%"
-                        src={`https://www.youtube.com/embed/${ritual.videoId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${ritual.videoId}`}
+                        src={`https://www.youtube.com/embed/${ritual.videoId}?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${ritual.videoId}&modestbranding=1&iv_load_policy=3`}
                         title={ritual.title}
                         allow="autoplay; encrypted-media"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover scale-110 transform"
+                        style={{ 
+                          transform: 'scale(1.2)',
+                          transformOrigin: 'center'
+                        }}
                       />
-                    ) : (
-                      <img
-                        src={ritual.image}
-                        alt={ritual.title}
-                        className="w-full h-full object-cover"
-                      />
-                    )}
+                      {/* Subtle overlay for text contrast */}
+                      <div className="absolute inset-0 bg-black/10"></div>
+                    </div>
                   </motion.div>
                 </div>
                 
@@ -159,7 +160,7 @@ export default function Rituals() {
           </div>
         </motion.section>
 
-        {/* All Ritual Experiences Grid */}
+        {/* All Ritual Experiences Grid - Moved to bottom */}
         <motion.section 
           initial="hidden"
           whileInView="visible"

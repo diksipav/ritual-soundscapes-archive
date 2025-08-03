@@ -70,19 +70,19 @@ export default function VideoPlayer() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 relative overflow-hidden">
-      {/* Epic Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-slate-900/40 to-black"></div>
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-100 relative overflow-hidden">
+      {/* Warm earthy gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-100/80 via-orange-100/60 to-red-200/40"></div>
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-red-300/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
       
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header with Return Button and Logo */}
         <motion.header 
-          className="p-4 sm:p-6"
+          className="p-4 sm:p-6 backdrop-blur-md bg-white/10 border-b border-white/20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -90,7 +90,7 @@ export default function VideoPlayer() {
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/archive')}
-              className="flex items-center gap-2 text-white/80 hover:text-white transition-colors duration-300 font-body text-sm tracking-wider"
+              className="flex items-center gap-2 text-amber-900/80 hover:text-amber-900 transition-colors duration-300 font-body text-sm tracking-wider bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm"
             >
               <ArrowLeft size={16} />
               <span className="hidden sm:inline">BACK TO ARCHIVE</span>
@@ -99,14 +99,14 @@ export default function VideoPlayer() {
             
             {/* Centered Logo */}
             <div className="absolute left-1/2 transform -translate-x-1/2 text-center">
-              <div className="font-display text-white tracking-[0.3em]">
-                <div className="text-lg sm:text-xl">LOWTIDE</div>
-                <div className="text-lg sm:text-xl">RITUAL</div>
+              <div className="font-display text-amber-900 tracking-[0.3em]">
+                <div className="text-lg sm:text-xl text-center">LOWTIDE</div>
+                <div className="text-lg sm:text-xl text-center">RITUAL</div>
               </div>
             </div>
             
             <div className="text-right">
-              <div className="text-white/60 text-xs sm:text-sm tracking-wider">{session.duration}</div>
+              <div className="text-amber-800/60 text-xs sm:text-sm tracking-wider bg-white/20 px-3 py-1 rounded-full">{session.duration}</div>
             </div>
           </div>
         </motion.header>
@@ -120,7 +120,7 @@ export default function VideoPlayer() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Video Player */}
-            <div className="aspect-video mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-2xl">
+            <div className="aspect-video mb-6 sm:mb-8 rounded-lg overflow-hidden shadow-2xl border border-white/30">
               <iframe
                 width="100%"
                 height="100%"
@@ -139,14 +139,14 @@ export default function VideoPlayer() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div>
-                <h1 className="font-display text-xl sm:text-2xl md:text-4xl text-white mb-3 sm:mb-4 tracking-wider font-bold leading-tight">
+              <div className="bg-white/30 backdrop-blur-md rounded-lg p-6 sm:p-8 border border-white/40">
+                <h1 className="font-display text-xl sm:text-2xl md:text-4xl text-amber-900 mb-3 sm:mb-4 tracking-wider font-bold leading-tight">
                   {session.title}
                 </h1>
-                <p className="font-body text-lg sm:text-xl text-purple-200 tracking-widest mb-2">
+                <p className="font-body text-lg sm:text-xl text-amber-800 tracking-widest mb-2">
                   PERFORMED BY {session.artist}
                 </p>
-                <p className="font-body text-sm sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed px-2">
+                <p className="font-body text-sm sm:text-lg text-amber-800/80 max-w-2xl mx-auto leading-relaxed px-2">
                   {session.description}
                 </p>
               </div>
@@ -157,14 +157,14 @@ export default function VideoPlayer() {
                   href={`https://www.youtube.com/watch?v=${session.youtubeId}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-animated-primary flex items-center gap-2 justify-center text-sm sm:text-base"
+                  className="bg-amber-900 hover:bg-amber-800 text-white px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 flex items-center gap-2 justify-center text-sm sm:text-base tracking-wider backdrop-blur-sm border border-amber-700"
                 >
                   <Youtube size={18} />
                   EXPLORE MORE ON
                 </a>
                 <button 
                   onClick={() => navigate('/archive')}
-                  className="btn-animated-ghost text-white border-white hover:bg-white hover:text-slate-900 text-sm sm:text-base"
+                  className="bg-white/20 hover:bg-white/30 text-amber-900 border-2 border-amber-900/30 hover:border-amber-900/50 px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 text-sm sm:text-base tracking-wider backdrop-blur-sm"
                 >
                   EXPLORE MORE SESSIONS
                 </button>

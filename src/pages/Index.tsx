@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import VideoHero from '@/components/VideoHero';
 import { useEffect, useRef } from 'react';
-import { Play } from 'lucide-react';
 
 const Index = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -76,6 +75,13 @@ const Index = () => {
     }
   };
 
+  // Custom Play Button Component
+  const CustomPlayButton = () => (
+    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center transform group-hover:scale-110 transition-all duration-500 shadow-xl border border-white/20">
+      <div className="w-0 h-0 border-l-[8px] sm:border-l-[12px] border-l-black border-y-[6px] sm:border-y-[8px] border-y-transparent ml-1 transition-all duration-300"></div>
+    </div>
+  );
+
   return (
     <div ref={containerRef} className="min-h-screen bg-background">
       {/* Hero Video Section */}
@@ -104,19 +110,20 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.7 }}
             >
               <div className="text-center">
-                <div className="font-display text-white tracking-[0.3em] text-2xl sm:text-3xl md:text-4xl">
-                  <div>LOWTIDE</div>
-                  <div>RITUAL</div>
+                <div className="font-display text-white tracking-[0.3em] text-2xl sm:text-3xl md:text-4xl text-center">
+                  <div className="text-center">LOWTIDE</div>
+                  <div className="text-center">RITUAL</div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Main Heading with Creative Typography */}
             <motion.h2 
-              className="font-display text-3xl sm:text-5xl md:text-7xl text-white mb-6 sm:mb-8 tracking-wider leading-tight"
+              className="text-3xl sm:text-5xl md:text-7xl text-white mb-6 sm:mb-8 tracking-wider leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
+              style={{ fontFamily: '"Crimson Text", serif' }}
             >
               WHERE MUSIC BECOMES A RITUAL
             </motion.h2>
@@ -136,13 +143,13 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3 }}
             >
-              <Link to="/live">
+              <Link to="/shop">
                 <motion.button 
                   className="btn-animated-primary tracking-widest w-full sm:w-auto"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  JOIN
+                  JOIN THE TRIBE
                 </motion.button>
               </Link>
               <Link to="/archive">
@@ -172,7 +179,7 @@ const Index = () => {
             <motion.h2 
               className="font-display text-4xl sm:text-5xl md:text-7xl text-foreground mb-6 sm:mb-8 tracking-wider"
               whileHover={{ 
-                fontFamily: '"Crimson Text", serif',
+                fontFamily: '"Playfair Display", serif',
                 transition: { duration: 0.3 }
               }}
             >
@@ -209,11 +216,9 @@ const Index = () => {
                         alt={session.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      {/* Play button overlay */}
-                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/90 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
-                          <Play className="text-black ml-1" size={20} fill="currentColor" />
-                        </div>
+                      {/* Custom Play button overlay */}
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-500 flex items-center justify-center backdrop-blur-[1px]">
+                        <CustomPlayButton />
                       </div>
                     </motion.div>
                     <div className="space-y-2 sm:space-y-3 px-2">
@@ -256,11 +261,9 @@ const Index = () => {
         <div className="max-w-5xl mx-auto w-full">
           <motion.div className="text-center mb-12 sm:mb-20" variants={fadeInUpVariants}>
             <motion.h2 
-              className="font-display text-4xl sm:text-5xl md:text-7xl text-foreground mb-6 sm:mb-8 tracking-wider"
-              whileHover={{ 
-                fontFamily: '"Crimson Text", serif',
-                transition: { duration: 0.3 }
-              }}
+              className="text-4xl sm:text-5xl md:text-7xl text-foreground mb-6 sm:mb-8 tracking-wider"
+              variants={fadeInUpVariants}
+              style={{ fontFamily: '"Playfair Display", serif' }}
             >
               UPCOMING EVENTS
             </motion.h2>
@@ -329,12 +332,9 @@ const Index = () => {
       >
         <div className="max-w-5xl mx-auto text-center w-full">
           <motion.h2 
-            className="font-display text-4xl sm:text-5xl md:text-7xl text-foreground mb-8 sm:mb-12 tracking-wider"
+            className="text-4xl sm:text-5xl md:text-7xl text-foreground mb-8 sm:mb-12 tracking-wider"
             variants={fadeInUpVariants}
-            whileHover={{ 
-              fontFamily: '"Crimson Text", serif',
-              transition: { duration: 0.3 }
-            }}
+            style={{ fontFamily: '"Crimson Text", serif' }}
           >
             OUR PHILOSOPHY
           </motion.h2>

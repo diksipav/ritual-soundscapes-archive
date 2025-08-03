@@ -16,7 +16,7 @@ export default function VideoHero({ children, isLive = false, className = "", vi
   const toggleMute = () => {
     setIsMuted(!isMuted);
     if (iframeRef.current && videoId) {
-      const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`;
+      const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${!isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080&modestbranding=1&iv_load_policy=3`;
       iframeRef.current.src = newSrc;
     }
   };
@@ -36,15 +36,15 @@ export default function VideoHero({ children, isLive = false, className = "", vi
         <div className="absolute inset-0">
           <iframe
             ref={iframeRef}
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${isMuted ? 1 : 0}&controls=0&showinfo=0&rel=0&loop=1&playlist=${videoId}&vq=hd1080&modestbranding=1&iv_load_policy=3`}
             title="Background Video"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110 transform"
             style={{ 
-              width: '100vw',
-              height: '56.25vw', // 16:9 aspect ratio
-              minHeight: '100vh',
-              minWidth: '177.77vh', // 16:9 aspect ratio
-              transform: 'translate(-50%, -50%)',
+              width: '120vw',
+              height: '67.5vw', // 16:9 aspect ratio with zoom
+              minHeight: '120vh',
+              minWidth: '213.32vh', // 16:9 aspect ratio with zoom
+              transform: 'translate(-50%, -50%) scale(1.1)',
               position: 'absolute',
               top: '50%',
               left: '50%',
@@ -52,8 +52,8 @@ export default function VideoHero({ children, isLive = false, className = "", vi
             }}
             allow="autoplay; encrypted-media"
           />
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40 sm:bg-black/30"></div>
+          {/* Enhanced Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         </div>
       ) : (
         /* Fallback background */
@@ -73,7 +73,7 @@ export default function VideoHero({ children, isLive = false, className = "", vi
       {videoUrl && (
         <button
           onClick={toggleMute}
-          className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20"
+          className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 bg-black/50 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full transition-all duration-300 backdrop-blur-sm z-20 border border-white/20"
         >
           {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>

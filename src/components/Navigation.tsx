@@ -86,12 +86,14 @@ export default function Navigation({ className = '' }: NavigationProps) {
 
   return (
     <>
-      {/* Dynamic Header */}
+      {/* Dynamic Header with Backdrop Blur */}
       <motion.header 
         className={`fixed top-0 left-0 right-0 z-40 p-6 ${className}`}
         style={{ 
           backgroundColor: `hsla(var(--background), ${headerOpacity.get()})`,
-          backdropFilter: headerOpacity.get() > 0.1 ? 'blur(20px)' : 'none'
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: headerOpacity.get() > 0.1 ? '1px solid hsla(var(--border), 0.1)' : 'none'
         }}
       >
         <div className="flex items-center justify-between">
@@ -143,7 +145,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
       </motion.header>
 
       {/* Mobile Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-background/95 backdrop-blur-sm border-t border-border">
+      <nav className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-background/95 backdrop-blur-lg border-t border-border">
         <div className="flex items-center justify-around py-3 px-4">
           {navLinks.slice(0, 4).map((link) => (
             <Link
@@ -173,7 +175,7 @@ export default function Navigation({ className = '' }: NavigationProps) {
       <AnimatePresence>
         {isOverlayOpen && (
           <motion.div 
-            className="fixed inset-0 z-50 nav-overlay hidden md:flex items-center justify-center"
+            className="fixed inset-0 z-50 nav-overlay hidden md:flex items-center justify-center backdrop-blur-2xl"
             onClick={closeOverlay}
             variants={overlayVariants}
             initial="hidden"
